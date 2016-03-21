@@ -20,7 +20,20 @@
     </div>
 
 	<?php wp_footer(); // js scripts are inserted using this function ?>
-
+    
+    <!--<script type="text/jscript" src="js/jquery-1.9.0.min.js"></script>-->
+	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.10.2.js"></script>
+	
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+	<script>
+    	$(function() {
+    	$( ".datepicker" ).datepicker();
+    	});
+    </script>
+	
 </body>
 
 </html>

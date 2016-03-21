@@ -5,6 +5,8 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+    <link href="<?php bloginfo('template_directory');?>/css/default.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 	<?php wp_head(); ?>
 </head>

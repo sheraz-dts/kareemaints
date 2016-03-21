@@ -14,6 +14,67 @@ Licensed under the MIT license.
 .
 */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+
+.pad-top-10
+{padding-top: 10px;}
+.m-top-10-bot-20
+{margin-top:10px; margin-bottom:20px;}
+.m-top-40-bot-30
+{margin-top:40px; margin-bottom:30px;}
+.m-bot-20
+{margin-bottom:20px;}
+.box-l
+{background: #cfcfc5; margin: 0; padding-bottom: 15px;}
+.box-l h2
+{margin:15px 0;}
+.bg-color-white
+{background: #fff !important;}
+.box-2
+{margin: 0;}
+.box-2 h3
+{margin:0 0 15px;}
+.panel-title
+{margin: 0 !important;}
+.box-2 .fa-long-arrow-right
+{opacity: .6}
+.box-2 b
+{font-size: 15px;}
+.box-2 .fa-4
+{font-size: 1.55em; opacity: 0.6; transform: rotate(45deg);}
+.panel-color
+{background: #ddd; padding: 15px 0;}
+.pad-bot-0
+{padding-bottom: 0!important;}
+.border-top
+{border-top: 1px solid rgba(89,89,89,.4);}
+.ui-widget
+{font-size: 0.8em !important;}
+.bg-greish
+{background: rgba(89,89,89,.1) !important;}
+.badge-set
+{background: #000!important; border-radius: 50% !important; margin: 9px 0 0 !important; padding: 6px 10px !important;}
+.border-b
+{border-bottom: 1px solid rgba(89,89,89,.4);}
+.border-d
+{border-bottom: 1px dotted rgba(89,89,89,.4);}
+.t-text
+{margin-top: 0;}
+.t-text .spans
+{color: rgba(0,0,0, .4) !important; font-style: italic;}
+.fa-wheelchair
+{font-size: 25.2px; margin-left: 20px;}
+.checks
+{background: #fff; box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.075) inset;
+ border: 1px solid hsl(0, 0%, 80%); margin: 0 0 0 !important; padding: 7px 18px;}
+.checks input
+{margin-top: 8px !important;}
+.col-black
+{display: block; font-size: 15px; font-weight: lighter; margin: 34px 0 0;}
+.col-red
+{color: red;}
+.little-size
+{color: rgba(0,0,0,.4); font-size: 12px;}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -52,7 +113,7 @@ template {
   display: none;
 }
 a {
-  background: transparent;
+  background: transparent; outline: 0 none !important;
 }
 a:active,
 a:hover {
