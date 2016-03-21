@@ -12,23 +12,11 @@
         
         <div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
             <div class="btn-group" role="group">
-                <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab">
+                <button type="button" id="stars" class="btn btn-default btn-group-justified" href="#tab1" data-toggle="tab">
                     <div><i class="glyphicon glyphicon-star"></i> Book Flight</div>
                 </button>
             </div>
-            <div class="btn-group" role="group">
-                <button type="button" id="favorites" class="btn btn-default" href="#tab2" 
-                data-toggle="tab">
-                    <div><i class="glyphicon glyphicon-heart"></i> Schedule</div>
-                </button>
-            </div>
-            <div class="btn-group" role="group">
-                <button type="button" id="following" class="btn btn-default" href="#tab3" 
-                data-toggle="tab">
-                    <div><i class="glyphicon glyphicon-user"></i> Ticket</div>
-                </button>
-            </div>
-         </div><!-- /btn-pref-end -->
+        </div><!-- /btn-pref-end -->
         
         <div class="well">
           <div class="tab-content clearfix">
@@ -119,70 +107,6 @@
                 </div><!-- /row-end --> 
                 <input class="btn btn-default" value="Search" type="submit">   
             </div><!-- /tab-1-end -->
-            <div class="tab-pane fade in" id="tab2">
-              <div class="row m-bot-20">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                       <label>From where?</label>
-                       <select class="form-control">
-                        <option value="AUH">Abu Dhabi, United Arab Emirates</option>
-                        <option value="AAN">Al Ain, United Arab Emirates</option>
-                        <option value="DMM">Dammam, Saudi Arabia</option>
-                        <option value="DEA">Dera Ghazi Khan, Pakistan</option>
-                        <option value="DXB">Dubai, United Arab Emirates</option>
-                        <option value="LYP">Faisalabad, Pakistan</option>
-                        <option value="ELQ">Gassim, Saudi Arabia</option>
-                        <option value="CAN">Guangzhou, China</option>
-                        <option value="ISB">Islamabad, Pakistan</option>
-                        <option selected="selected" value="KHI">Karachi, Pakistan</option>
-                        <option value="KWI">Kuwait, Kuwait</option>
-                        <option value="LHE">Lahore, Pakistan</option>
-                        <option value="MED">Madinah, Saudi Arabia</option>
-                        <option value="MAN">Manchester, England</option>
-                        <option value="MHD">Mashhad, Iran</option>
-                        <option value="MUX">Multan, Pakistan</option>
-                        <option value="MCT">Muscat, Oman</option>
-                        <option value="PEW">Peshawar, Pakistan</option>
-                        <option value="UET">Quetta, Pakistan</option>
-                        <option value="RUH">Riyadh, Saudi Arabia</option>
-                        <option value="SHJ">Sharjah, United Arab Emirates</option>
-                        <option value="SKT">Sialkot, Pakistan</option>
-                        <option value="SKZ">Sukkur, Pakistan</option>
-                        <option value="JED">Jeddah, Saudi Arabia</option>
-                        <option value="RYK">Rahim Yar Khan, Pakistan</option>
-                      </select>
-                    </div>  
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                       <label>Where do you want to go?</label>
-                       <select class="form-control">
-                            <option value="DXB">Dubai, United Arab Emirates</option>
-                            <option value="LYP">Faisalabad, Pakistan</option>
-                            <option selected="selected" value="ISB">Islamabad, Pakistan</option>
-                            <option value="JED">Jeddah, Saudi Arabia</option>
-                            <option value="LHE">Lahore, Pakistan</option>
-                            <option value="MED">Madinah, Saudi Arabia</option>
-                            <option value="MHD">Mashhad, Iran</option>
-                            <option value="MUX">Multan, Pakistan</option>
-                            <option value="PEW">Peshawar, Pakistan</option>
-                            <option value="UET">Quetta, Pakistan</option>
-                            <option value="SKZ">Sukkur, Pakistan</option>
-                      </select>
-                    </div> 
-                </div><!-- /row-end -->
-                <input class="btn btn-default" value="Search" type="submit">
-            </div><!-- /tab-2-end -->
-            <div class="tab-pane fade in" id="tab3">
-              <div class="row m-bot-20">
-                	<div class="col-md-6 col-sm-6 col-xs-6">
-                    	<label>Last Name</label>
-                		<input type="text" placeholder="Faraz" class="form-control">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                    	<label>Passenger Name Record No. (PNRN)</label>
-                		<input type="text" placeholder="RTYU34BT" class="form-control">
-                    </div>
-                </div><!-- /row-end -->
-                <input class="btn btn-default" value="Search" type="submit">  
-            </div><!-- /tab-3-end -->
           </div><!-- /tab-content-end -->
        </div><!-- /well-end -->
        
@@ -725,7 +649,7 @@
             </div>
             <div class="col-md-4">
                 <span class="little-size">Preferred Phone Number*</span>
-                <input type="text" placeholder="xxxxxxxxxx" class="form-control phone1">
+                <input type="text" placeholder="xxxxxxxxxx" class="form-control">
             </div>
         </div><!-- /row-end --> 
         <div class="row m-bot-20">
@@ -935,9 +859,10 @@
             </div>
             <div class="col-md-4">
                 <span class="little-size">Alternate Phone Number*</span>
-                <input type="text" placeholder="xxxxxxxxxx" class="form-control phone1">
+                <input type="text" placeholder="xxxxxxxxxx" class="form-control">
             </div>
         </div><!-- /row-end -->
+        <input type="submit" value="BOOKING" class="btn btn-default">
     </div><!-- /col-8-end -->
     <div class="col-md-4">
         

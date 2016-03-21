@@ -345,14 +345,16 @@ function dwwp_register_post_type(){
         ),
         'capability_type'       => 'post',
         'supports'              => array( 
-            'title', 
-            'editor', 
-            'author', 
-			'thumbnail' 
+            'title'
+            //'editor', 
+            //'author', 
+			//'thumbnail',
+			//'custom-fields',
         )
     );
 
     register_post_type('tickets', $args);
 }
  add_action('init', 'dwwp_register_post_type');
+ 
 
