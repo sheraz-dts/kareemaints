@@ -22,7 +22,7 @@ Licensed under the MIT license.
 .m-top-40-bot-30
 {margin-top:40px; margin-bottom:30px;}
 .m-bot-20
-{margin-bottom:20px;}
+{margin-bottom:20px !important;}
 .box-l
 {background: #cfcfc5; margin: 0; padding-bottom: 15px;}
 .box-l h2
@@ -74,6 +74,14 @@ Licensed under the MIT license.
 {color: red;}
 .little-size
 {color: rgba(0,0,0,.4); font-size: 12px;}
+.t-text-ov
+{margin: 0;}
+.t-text-ov h2
+{border-bottom: 1px solid rgba(89,89,89,.5); margin: 0 0 15px; padding: 0 0 16px;}
+.round-circle
+{border: 1px solid rgba(89,89,89,.5); border-radius: 50%; height: 35px; width: 35px;}
+.round-circle span
+{font-weight: bold; margin: 0;}
 
 html {
   font-family: sans-serif;
