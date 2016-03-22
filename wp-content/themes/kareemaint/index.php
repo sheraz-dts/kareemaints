@@ -367,7 +367,7 @@
 </div><!-- /well-end -->
 
 <div class="well clearfix">
-    <div class="col-md-8 bg-greish">
+    <div class="col-md-12 bg-greish">
         <div class="row">
             <div class="col-md-6">
                 <h4>Passangers</h4>
@@ -864,9 +864,6 @@
         </div><!-- /row-end -->
         <input type="submit" value="BOOKING" class="btn btn-default">
     </div><!-- /col-8-end -->
-    <div class="col-md-4">
-        
-    </div><!-- /col-4-end -->
 </div><!-- /well-end -->
 
 <?php get_footer(); ?>
