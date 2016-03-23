@@ -13,7 +13,7 @@
         <div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button type="button" id="stars" class="btn btn-default btn-group-justified" href="#tab1" data-toggle="tab">
-                    <div><i class="glyphicon glyphicon-star"></i> Book Flight</div>
+                    <div><i class="glyphicon glyphicon-star"></i>Book a Flight</div>
                 </button>
             </div>
         </div><!-- /btn-pref-end -->

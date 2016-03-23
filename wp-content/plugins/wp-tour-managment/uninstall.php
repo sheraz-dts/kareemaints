@@ -10,7 +10,7 @@ function wptm_delete_plugin() {
 
 	$posts = get_posts( array(
 		'numberposts' => -1,
-		'post_type' => 'tours',
+		'post_type' => 'tickets',
 		'post_status' => 'any' ) );
 
 	foreach ( $posts as $post )
