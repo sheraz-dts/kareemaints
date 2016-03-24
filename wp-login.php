@@ -149,7 +149,10 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	</head>
 	<body class="login <?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<div id="login">
-		<h1><a href="<?php echo esc_url( $login_header_url ); ?>" title="<?php echo esc_attr( $login_header_title ); ?>" tabindex="-1"><?php bloginfo( 'name' ); ?></a></h1>
+		<h1>
+        	<a href="<?php bloginfo( 'home' ); ?>" title="Kareema Int" 
+            tabindex="-1"><?php bloginfo( 'name' ); ?></a>
+        </h1>
 	<?php
 
 	unset( $login_header_url, $login_header_title );
@@ -711,7 +714,7 @@ case 'register' :
 	$redirect_to = apply_filters( 'registration_redirect', $registration_redirect );
 	login_header(__('Registration Form'), '<p class="message register">' . __('Register For This Site') . '</p>', $errors);
 ?>
-<form name="registerform" id="registerform" action="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" method="post" novalidate="novalidate">
+<form name="registerform" id="registerform" action="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" method="post" novalidate>
 	<p>
 		<label for="user_login"><?php _e('Username') ?><br />
 		<input type="text" name="user_login" id="user_login" class="input" value="<?php echo esc_attr(wp_unslash($user_login)); ?>" size="20" /></label>
@@ -923,6 +926,20 @@ default:
 <?php endif; ?>
 </p>
 <?php } ?>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- That Allows to background-image fullsize -->
+<script type="text/javascript" src="backstretch.js"></script>
+<script type="text/javascript">
+	/*
+ * At its core, Backstretch is a one-line plugin.
+ * Just pass in the path to an image, and you're done.
+ */
+
+  $.backstretch("AC_Inspection_01.jpg");
+
+</script>
 
 <script type="text/javascript">
 function wp_attempt_focus(){
