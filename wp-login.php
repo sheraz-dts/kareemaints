@@ -251,10 +251,7 @@ function login_footer($input_id = '') {
      */
     
       $.backstretch("AC_Inspection_01.jpg");
-    
     </script>
-    
-    
 	</body>
 	</html>
 	<?php
