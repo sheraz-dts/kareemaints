@@ -1,5 +1,5 @@
 === WP Tour Management WordPress Plugin ===
-Contributors: sheraz
+Contributors: muhammadsheraz, fareed850
 Donate link: 
 Tags: 
 Requires at least: 
