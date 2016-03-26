@@ -239,6 +239,22 @@ function login_footer($input_id = '') {
 	 */
 	do_action( 'login_footer' ); ?>
 	<div class="clear"></div>
+    
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+    <!-- That Allows to background-image fullsize -->
+    <script type="text/javascript" src="backstretch.js"></script>
+    <script type="text/javascript">
+        /*
+     * At its core, Backstretch is a one-line plugin.
+     * Just pass in the path to an image, and you're done.
+     */
+    
+      $.backstretch("AC_Inspection_01.jpg");
+    
+    </script>
+    
+    
 	</body>
 	</html>
 	<?php
@@ -926,20 +942,6 @@ default:
 <?php endif; ?>
 </p>
 <?php } ?>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
-<!-- That Allows to background-image fullsize -->
-<script type="text/javascript" src="backstretch.js"></script>
-<script type="text/javascript">
-	/*
- * At its core, Backstretch is a one-line plugin.
- * Just pass in the path to an image, and you're done.
- */
-
-  $.backstretch("AC_Inspection_01.jpg");
-
-</script>
 
 <script type="text/javascript">
 function wp_attempt_focus(){

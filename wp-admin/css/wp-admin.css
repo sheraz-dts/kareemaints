@@ -13,11 +13,11 @@
 @import url(site-icon.css);
 @import url(l10n.css);
 
-.body {
+/*.body {
     background: hsla(0, 0%, 0%, 0) url("../../wp-admin/images/AC_Inspection_01.jpg") repeat scroll center top / cover ;
     color: hsl(0, 0%, 27%);
     font-family: "Open Sans",sans-serif;
     font-size: 13px;
     line-height: 1.4em;
     min-width: 0;
-}
+}*/
