@@ -23,15 +23,25 @@
     
     <!--<script type="text/jscript" src="js/jquery-1.9.0.min.js"></script>-->
 	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.10.2.js"></script>
+    
+  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    
+    <!-- Hide and Show Div script -->
 	<script>
-    	$(function() {
-    	$( ".datepicker" ).datepicker();
-    	});
+	$(function() {
+		$( ".datepicker" ).datepicker();
+	});
+	
+    $(document).ready(function(){
+        $("input.btn").click(function(){
+            $("div.dis-appear").hide(1000);
+			$("div.bg-color-white").show();
+        });	
+		$("button").click(function(){
+            $("div.disapp-whole").hide(1000);
+			$("div.show-whole").show();
+        });
+    });
     </script>
 	
 </body>
