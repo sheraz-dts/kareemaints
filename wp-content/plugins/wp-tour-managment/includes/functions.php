@@ -16,9 +16,6 @@ function get_from_destinations( $params = array() ) {
 			LIMIT %d,%d";
 	
 	$destinations = $wpdb->get_results($wpdb->prepare($sql, $limit_min, $limit_max));
-	
-	debug_vars($destinations);
-	die;
 }
 
 function debug_vars( $var = array() ) {
