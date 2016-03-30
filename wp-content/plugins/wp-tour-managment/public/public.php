@@ -1,104 +1,98 @@
 <?php 
-
+//how to post form using in functions.php
+//how to receive form post vlaues in functin.php
+/**
+ * Function to display search form.
+ */
 function wptm_tour_search() {
-	get_from_destinations();
+	global $destinations;
 	?>
-<div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
+		<div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button type="button" id="stars" class="btn btn-default btn-group-justified" href="#tab1" data-toggle="tab">
                     <div><i class="glyphicon glyphicon-star"></i>Book a Flight</div>
                 </button>
             </div>
         </div><!-- /btn-pref-end -->
-        
         <div class="well">
           <div class="tab-content clearfix">
             <div class="tab-pane fade in active" id="tab1">
                 <div class="row m-bot-20">
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>From</label>
-                       <select class="form-control">
-                        <option value="AUH">Abu Dhabi, United Arab Emirates</option>
-                        <option value="AAN">Al Ain, United Arab Emirates</option>
-                        <option value="DMM">Dammam, Saudi Arabia</option>
-                        <option value="DEA">Dera Ghazi Khan, Pakistan</option>
-                        <option value="DXB">Dubai, United Arab Emirates</option>
-                        <option value="LYP">Faisalabad, Pakistan</option>
-                        <option value="ELQ">Gassim, Saudi Arabia</option>
-                        <option value="CAN">Guangzhou, China</option>
-                        <option value="ISB">Islamabad, Pakistan</option>
-                        <option selected="selected" value="KHI">Karachi, Pakistan</option>
-                        <option value="KWI">Kuwait, Kuwait</option>
-                        <option value="LHE">Lahore, Pakistan</option>
-                        <option value="MED">Madinah, Saudi Arabia</option>
-                        <option value="MAN">Manchester, England</option>
-                        <option value="MHD">Mashhad, Iran</option>
-                        <option value="MUX">Multan, Pakistan</option>
-                        <option value="MCT">Muscat, Oman</option>
-                        <option value="PEW">Peshawar, Pakistan</option>
-                        <option value="UET">Quetta, Pakistan</option>
-                        <option value="RUH">Riyadh, Saudi Arabia</option>
-                        <option value="SHJ">Sharjah, United Arab Emirates</option>
-                        <option value="SKT">Sialkot, Pakistan</option>
-                        <option value="SKZ">Sukkur, Pakistan</option>
+                       <select name="from_destination" class="form-control">
+                       <?php 
+	                       	
+                       	foreach($destinations as $destination){ ?>
+                       		
+	                   <?php //if ($selected_form == $destination) {
+	                       		//$selected = 'selected="selected"';
+	                       	//} else {
+	                       			//$selected = '';
+	                  // }?>
+	                     	<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
+                       	
+                       	<?php } ?>                                              	
+                       	
+                        <!--<option value="<?//php ?>"  <?//php //echo $selected; ?>><?//php ?></option>-->
+                       
                       </select>
                     </div>  
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>To</label>
-                       <select class="form-control">
-                            <option value="DXB">Dubai, United Arab Emirates</option>
-                            <option value="LYP">Faisalabad, Pakistan</option>
-                            <option selected="selected" value="ISB">Islamabad, Pakistan</option>
-                            <option value="LHE">Lahore, Pakistan</option>
-                            <option value="MED">Madinah, Saudi Arabia</option>
-                            <option value="MHD">Mashhad, Iran</option>
-                            <option value="MUX">Multan, Pakistan</option>
-                            <option value="PEW">Peshawar, Pakistan</option>
-                            <option value="UET">Quetta, Pakistan</option>
-                            <option value="SKZ">Sukkur, Pakistan</option>
+                       <select name="to_destination" class="form-control">
+	                       <?php 
+	                       	foreach($destinations as $destination){ ?>
+	                       		
+		                     	<option <?php echo $destination['city_id'] == '1380' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
+	                       	
+	                       	<?php } ?>
                       </select>
                     </div> 
                 </div><!-- /row-end -->
                 <div class="row m-bot-20">
                 	<div class="col-md-6 col-sm-6 col-xs-6">
                     	<label>Departing</label>
-                		<input type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
+                		<input type="text" name="departing" id="deprting" placeholder="mm/dd/yyyy" class="form-control datepicker">
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                     	<label>Returning</label>
-                		<input type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
+                		<input type="text" name="returning" id="returning" placeholder="mm/dd/yyyy" class="form-control datepicker">
                     </div>
                 </div><!-- /row-end --> 
                 <div class="row m-bot-20">
                 	<div class="col-md-4 col-sm-4 col-xs-4">
                     	<label>Adult</label>
-                		<select class="form-control">
-                          <option selected="">1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                		<select name="adult" class="form-control">
+                          <option selected="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
                       </select>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-4">
                     	<label>Child</label>
-                		<select class="form-control">
-                          <option selected="">1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                		<select name="child" class="form-control">
+                          <option selected="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
                       </select>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-4">
                     	<label>Infant</label>
-                		<select class="form-control">
-                          <option selected="">0</option>
-                          <option>1</option>
+                		<select name="infant" class="form-control">
+                          <option selected="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
                       </select>
                     </div>
                 </div><!-- /row-end --> 
-                <input class="btn btn-default" value="Search" type="submit">   
+                <input class="btn btn-default" name="submit" type="submit" value="Search">   
             </div><!-- /tab-1-end -->
           </div><!-- /tab-content-end -->
        </div><!-- /well-end -->
@@ -106,67 +100,45 @@ function wptm_tour_search() {
 }
 
 add_action( 'portlet_tour_search', 'wptm_tour_search' );
-/**
- * Function to display search results.
- */
+
 function wptm_tour_search_sr() {
+	global $destinations;
 	?>
 	 <div class="col-md-4 box-l">
            <h2>Flights</h2>
-            <form class="m-bot-20"> 
-                <label class="radio-inline"> 
-                    <input type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">Roundtrip 
-                </label> 
-                <label class="radio-inline"> 
-                    <input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions"> 
-                    One Way
-                </label> 
-            </form>
-                <div class="row m-bot-20">
+            	<div class="row m-bot-20">
+            		<div class="col-md-12">
+		                <label class="radio-inline"> 
+		                    <input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions"> 
+		                    One Way
+		                </label> 
+		                <label class="radio-inline"> 
+		                    <input checked="checked" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">Roundtrip 
+		                </label> 
+		             </div><!-- /col-md-12-end -->
+				 </div><!-- /row-end -->
+                 <div class="row m-bot-20">
                     <div class="col-md-12 m-bot-20">
                        <label>Flying from</label>
                        <select class="form-control">
-                        <option value="AUH">Abu Dhabi, United Arab Emirates</option>
-                        <option value="AAN">Al Ain, United Arab Emirates</option>
-                        <option value="DMM">Dammam, Saudi Arabia</option>
-                        <option value="DEA">Dera Ghazi Khan, Pakistan</option>
-                        <option value="DXB">Dubai, United Arab Emirates</option>
-                        <option value="LYP">Faisalabad, Pakistan</option>
-                        <option value="ELQ">Gassim, Saudi Arabia</option>
-                        <option value="CAN">Guangzhou, China</option>
-                        <option value="ISB">Islamabad, Pakistan</option>
-                        <option selected="selected" value="KHI">Karachi, Pakistan</option>
-                        <option value="KWI">Kuwait, Kuwait</option>
-                        <option value="LHE">Lahore, Pakistan</option>
-                        <option value="MED">Madinah, Saudi Arabia</option>
-                        <option value="MAN">Manchester, England</option>
-                        <option value="MHD">Mashhad, Iran</option>
-                        <option value="MUX">Multan, Pakistan</option>
-                        <option value="MCT">Muscat, Oman</option>
-                        <option value="PEW">Peshawar, Pakistan</option>
-                        <option value="UET">Quetta, Pakistan</option>
-                        <option value="RUH">Riyadh, Saudi Arabia</option>
-                        <option value="SHJ">Sharjah, United Arab Emirates</option>
-                        <option value="SKT">Sialkot, Pakistan</option>
-                        <option value="SKZ">Sukkur, Pakistan</option>
-                        <option value="JED">Jeddah, Saudi Arabia</option>
-                        <option value="RYK">Rahim Yar Khan, Pakistan</option>
+                       
+                        <?php foreach($destinations as $destination){ ?>
+                       		
+	                     	<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
+                       	
+                       	<?php } ?>
+                                                                       
                       </select>
                     </div> <!-- /col-12-end --> 
                     <div class="col-md-12">
                        <label>To</label>
                        <select class="form-control">
-                            <option value="DXB">Dubai, United Arab Emirates</option>
-                            <option value="LYP">Faisalabad, Pakistan</option>
-                            <option selected="selected" value="ISB">Islamabad, Pakistan</option>
-                            <option value="JED">Jeddah, Saudi Arabia</option>
-                            <option value="LHE">Lahore, Pakistan</option>
-                            <option value="MED">Madinah, Saudi Arabia</option>
-                            <option value="MHD">Mashhad, Iran</option>
-                            <option value="MUX">Multan, Pakistan</option>
-                            <option value="PEW">Peshawar, Pakistan</option>
-                            <option value="UET">Quetta, Pakistan</option>
-                            <option value="SKZ">Sukkur, Pakistan</option>
+                       	<?php 
+                       	foreach($destinations as $destination){ ?>
+                       		
+	                     	<option value="<?php echo $destination['country_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
+                       	
+                       	<?php } ?>
                       </select>
                     </div><!-- /col-12-end -->
                 </div><!-- /row-end -->
@@ -175,7 +147,7 @@ function wptm_tour_search_sr() {
                     <label>Departing</label>
                     <input type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="col-md-6 col-sm-6 col-xs-6 whole-show whole-disap">
                     <label>Returning</label>
                     <input type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
                 </div>
@@ -184,7 +156,8 @@ function wptm_tour_search_sr() {
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <label>Adult</label>
                     <select class="form-control">
-                      <option selected="">1</option>
+                      <option selected="">0</option>
+                      <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -194,7 +167,8 @@ function wptm_tour_search_sr() {
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <label>Child</label>
                     <select class="form-control">
-                      <option selected="">1</option>
+                      <option selected="">0</option>
+                      <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
