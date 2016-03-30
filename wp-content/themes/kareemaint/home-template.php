@@ -6,7 +6,7 @@ Template Name: Home Page
 
 <?php get_header(); ?>
 
-	<form action="<?php the_permalink('29');?>" method="post" name="tour search">
+	<form action="<?php the_permalink('29');?>" method="post" name="tour_search">
     <?php do_action ( 'portlet_tour_search' )?>
     </form>
     

@@ -1,6 +1,4 @@
 <?php 
-//how to post form using in functions.php
-//how to receive form post vlaues in functin.php
 /**
  * Function to display search form.
  * 
