@@ -3,7 +3,6 @@
 //how to receive form post vlaues in functin.php
 /**
  * Function to display search form.
- * 
  */
 function wptm_tour_search() {
 	global $destinations;
