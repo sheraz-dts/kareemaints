@@ -49,6 +49,8 @@ Licensed under the MIT license.
 {border-top: 1px solid rgba(89,89,89,.4);}
 .ui-widget
 {font-size: 0.8em !important;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+{text-decoration:none;}
 .bg-greish
 {background: rgba(89,89,89,.1) !important;}
 .badge-set
@@ -82,6 +84,8 @@ Licensed under the MIT license.
 {border: 1px solid rgba(89,89,89,.5); border-radius: 50%; height: 35px; width: 35px;}
 .round-circle span
 {font-weight: bold; margin: 0;}
+.spans
+{font-style:italic; color: rgba(0,0,0,.4);}
 
 html {
   font-family: sans-serif;
@@ -207,6 +211,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  outline:0 none !important;
 }
 button[disabled],
 html input[disabled] {

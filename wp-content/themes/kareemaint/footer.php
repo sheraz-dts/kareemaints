@@ -41,6 +41,12 @@
             $("div.disapp-whole").hide(1000);
 			$("div.show-whole").show();
         });
+        $("input#inlineRadio1").click(function(){
+			$("div.whole-show").show();
+        });
+		$("input#inlineRadio2").click(function(){
+			$("div.whole-disap").hide();
+        });
     });
     </script>
 	
