@@ -18,6 +18,9 @@ Template Name: Search Results
 		
 		dv($_POST);
 		
+		
+		$pageposts = $wpdb->get_results($querystr, ARRAY_A);
+		
 	} 
 	
 	;?>
