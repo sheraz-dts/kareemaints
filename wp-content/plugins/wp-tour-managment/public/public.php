@@ -20,22 +20,10 @@ function wptm_tour_search() {
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>From</label>
                        <select name="from_destination" class="form-control">
-                       <?php 
-	                       	
-                       	foreach($destinations as $destination){ ?>
-                       		
-	                   <?php //if ($selected_form == $destination) {
-	                       		//$selected = 'selected="selected"';
-	                       	//} else {
-	                       			//$selected = '';
-	                  // }?>
-	                     	<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
-                       	
-                       	<?php } ?>                                              	
-                       	
-                        <!--<option value="<?//php ?>"  <?//php //echo $selected; ?>><?//php ?></option>-->
-                       
-                      </select>
+                        	<?php foreach($destinations as $destination){ ?>
+	                     		<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
+                       		<?php } ?> 
+                      	</select>
                     </div>  
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>To</label>
