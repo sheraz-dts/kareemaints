@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * To get destinations from wp_city and wp_country tables
+ * 
+ * @param array $params
+ * @return array
+ */ 
 function get_from_destinations( $params = array() ) {
 	// global
 	global $wpdb;

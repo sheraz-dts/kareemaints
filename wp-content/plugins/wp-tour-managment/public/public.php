@@ -21,7 +21,6 @@ function wptm_tour_search() {
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>From</label>
                        <select name="from_destination" class="form-control">
-                       
                        <?php 
 	                       	
                        	foreach($destinations as $destination){ ?>
