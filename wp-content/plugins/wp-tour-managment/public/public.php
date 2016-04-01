@@ -28,12 +28,9 @@ function wptm_tour_search() {
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>To</label>
                        <select name="to_destination" class="form-control">
-	                       <?php 
-	                       	foreach($destinations as $destination){ ?>
-	                       		
+	                       <?php foreach($destinations as $destination){ ?>
 		                     	<option <?php echo $destination['city_id'] == '1380' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
-	                       	
-	                       	<?php } ?>
+		                   <?php } ?>
                       </select>
                     </div> 
                 </div><!-- /row-end -->
@@ -90,46 +87,171 @@ add_action( 'portlet_tour_search', 'wptm_tour_search' );
 
 function wptm_tour_search_sr() {
 	global $destinations;
+?>
+
+	<?php if (!empty($_POST)) {
+			$from_destination = !empty($_POST['from_destination']) ? $_POST['from_destination'] : '';
+			$to_destination = !empty($_POST['to_destination']) ? $_POST['to_destination'] : '';
+			$departing = !empty($_POST['departing']) ? $_POST['departing'] : '';
+			$returning = !empty($_POST['returning']) ? $_POST['returning'] : '';
+			$adult = $_POST['adult'];
+			$child = $_POST['child'];
+			$infant = $_POST['infant'];	
+		
+// 		    $querystr = "
+// 				SELECT p.* 
+// 				FROM $wpdb->posts p
+// 				RIGHT JOIN $wpdb->postmeta pm
+// 					ON p.ID = pm.post_id
+// 				WHERE p.post_type = 'tours'"; 
+				
+// 		    if (!empty($from_destination)) {
+// 				$querystr .= " AND (pm.meta_key = 'from' AND pm.meta_value = '$from_destination')";
+// 		    }
+		    
+// 		    if (!empty($to_destination)) {
+// 				$querystr .= " AND (pm.meta_key = 'to' AND pm.meta_value = '$to_destination')";
+// 		    }
+		    
+// 		    if (!empty($departing)) {
+// 				$querystr .= " AND (pm.meta_key = 'departing' AND pm.meta_value = '$departing')";		
+// 		    }
+		    
+// 		    if (!empty($returning)) {	
+// 				$querystr .= " AND (pm.meta_key = 'returning' AND pm.meta_value = '$returning')";
+// 		    }
+					
+// 			$querystr .= "	AND p.post_status = 'publish'
+// 							AND p.post_date < NOW()
+// 							GROUP BY p.ID	
+// 							ORDER BY p.post_date DESC
+// 			";
+// 			$pageposts = $wpdb->get_results($querystr, ARRAY_A); 
+			
+//  			$args = array(
+//  					'post_type' => 'tours',
+//  					'post_status' => 'publish',
+//  					'posts_per_page' => -1,
+//  					'meta_query' => array(
+//  							array(
+//  									'key' => 'from',
+//  									'value' => $from_destination,
+//  							),
+//  							array(
+//  									'key' => 'to',
+//  									'value' => $to_destination,
+//  							),
+//  							array(
+//  									'key' => 'departing',
+//  									'value' => $departing,
+//  							),	
+//  							array(
+//  									'key' => 'returning',
+//  									'value' => $returning,
+//  							),
+//  							array(
+//  									'key' => 'adults',
+//  									'value' => $adult,
+//  							),
+//  							array(
+// 									'key' => 'childs',
+//  									'value' => $child,
+//  							),
+//  							array(
+//  									'key' => 'infants',
+//  									'value' => $infant,
+//  							),
+//  					)
+//  			);
+//  			$query = new WP_Query( $args );
+// 			$rows = $query->get_posts();	
+
+			// args
+			$args = array(
+					'numberposts'	=> -1,
+					'post_type'		=> 'tours',
+					'meta_query'	=> array(
+							//'relation'		=> 'OR',
+							array(
+  									'key' => 'from',
+  									'value' => $from_destination,
+  							),
+							array(
+									'key' => 'to',
+									'value' => $to_destination,
+							),
+							array(
+									'key' => 'departing',
+									'value' => $departing,
+							),
+							array(
+									'key' => 'returning',
+									'value' => $returning,
+							),
+							array(
+									'key' => 'adults',
+									'value' => $adult,
+							),
+							array(
+									'key' => 'childs',
+									'value' => $child,
+							),
+							array(
+									'key' => 'infants',
+									'value' => $infant,
+							),
+					)
+			);
+				
+			// query
+			$the_query = new WP_Query( $args );			
+			
+			dv($the_query);
+ 			die;
+	}
 	?>
+	
+	<?php //if($pageposts):?>
+	<?php //global $post; ?>
+ 	<?php //foreach ($rows as $post): ?>
+ 	<?php //setup_postdata($post); ?>
+
+    <?php //endforeach; ?>    
+    <?php //endif; ?>
+
 	 <div class="col-md-4 box-l">
-           <h2>Flights</h2>
-            	<div class="row m-bot-20">
-            		<div class="col-md-12">
-		                <label class="radio-inline"> 
-		                    <input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions"> 
-		                    One Way
-		                </label> 
-		                <label class="radio-inline"> 
-		                    <input checked="checked" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">Roundtrip 
-		                </label> 
-		             </div><!-- /col-md-12-end -->
-				 </div><!-- /row-end -->
-                 <div class="row m-bot-20">
-                    <div class="col-md-12 m-bot-20">
-                       <label>Flying from</label>
-                       <select class="form-control">
-                       
-                        <?php foreach($destinations as $destination){ ?>
-                       		
-	                     	<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
-                       	
-                       	<?php } ?>
-                                                                       
-                      </select>
-                    </div> <!-- /col-12-end --> 
-                    <div class="col-md-12">
-                       <label>To</label>
-                       <select class="form-control">
-                       	<?php 
-                       	foreach($destinations as $destination){ ?>
-                       		
-	                     	<option value="<?php echo $destination['country_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
-                       	
-                       	<?php } ?>
-                      </select>
-                    </div><!-- /col-12-end -->
-                </div><!-- /row-end -->
-                <div class="row m-bot-20">
+		<h2>Flights</h2>
+            <div class="row m-bot-20">
+            	<div class="col-md-12">
+					<label class="radio-inline"> 
+						<input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions">
+						One Way
+		            </label> 
+	                <label class="radio-inline"> 
+	                    <input checked="checked" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">
+	                    Roundtrip 
+	                </label> 
+	             </div><!-- /col-md-12-end -->
+ 			</div><!-- /row-end -->
+			<div class="row m-bot-20">
+				<div class="col-md-12 m-bot-20">
+					<label>Flying from</label>
+					<select class="form-control">
+                    	<?php foreach($destinations as $destination){ ?>
+                     	<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
+                       	<?php } ?>                                           
+                    </select>
+                </div> <!-- /col-12-end --> 
+                <div class="col-md-12">
+					<label>To</label>
+					<select class="form-control">
+                    	<?php foreach($destinations as $destination){ ?>
+                     		<option <?php echo $destination['city_id'] == '2823' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
+                       	<?php } ?> 
+                    </select>
+				</div><!-- /col-12-end -->
+			</div><!-- /row-end -->
+			<div class="row m-bot-20">
                 <div class="col-md-6 col-sm-6 col-xs-6">
                     <label>Departing</label>
                     <input type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
