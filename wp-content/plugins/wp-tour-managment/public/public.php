@@ -45,7 +45,7 @@ function wptm_tour_search() {
                     </div>
                 </div><!-- /row-end --> 
                 <div class="row m-bot-20">
-                	<div class="col-md-4 col-sm-4 col-xs-4">
+                	<div class="col-md-3 col-sm-4 col-xs-4">
                     	<label>Adult</label>
                 		<select name="adult" class="form-control">
                           <option selected="0">0</option>
@@ -56,7 +56,7 @@ function wptm_tour_search() {
                           <option value="5">5</option>
                       </select>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-md-3 col-sm-4 col-xs-4">
                     	<label>Child</label>
                 		<select name="child" class="form-control">
                           <option selected="0">0</option>
@@ -67,7 +67,7 @@ function wptm_tour_search() {
                           <option value="5">5</option>
                       </select>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-md-3 col-sm-4 col-xs-4">
                     	<label>Infant</label>
                 		<select name="infant" class="form-control">
                           <option selected="0">0</option>
@@ -75,6 +75,15 @@ function wptm_tour_search() {
                           <option value="2">2</option>
                       </select>
                     </div>
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                    <label>Class</label>
+                    <select class="form-control">
+                      <option selected="">Economy</option>
+                      <option>Business</option>
+                      <option>Economy</option>
+                      <option>Group</option>
+                  </select>
+                </div>
                 </div><!-- /row-end --> 
                 <input class="btn btn-default" name="submit" type="submit" value="Search">   
             </div><!-- /tab-1-end -->
@@ -206,8 +215,8 @@ function wptm_tour_search_sr() {
 			// query
 			$the_query = new WP_Query( $args );			
 			
-			dv($the_query);
- 			die;
+			//dv($the_query);
+ 			//die;
 	}
 	?>
 	
