@@ -75,6 +75,15 @@ function wptm_tour_search() {
                           <option value="2">2</option>
                       </select>
                     </div>
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                    <label>Class</label>
+                    <select class="form-control">
+                      <option selected="">Economy</option>
+                      <option>Business</option>
+                      <option>Economy</option>
+                      <option>Group</option>
+                  </select>
+                </div>
                 </div><!-- /row-end --> 
                 <input class="btn btn-default" name="submit" type="submit" value="Search">   
             </div><!-- /tab-1-end -->
@@ -86,7 +95,7 @@ function wptm_tour_search() {
 add_action( 'portlet_tour_search', 'wptm_tour_search' );
 
 function wptm_tour_search_sr() {
-	global $destinations;	
+	global $destinations;
 ?>
 
 	 <div class="col-md-4 box-l">
@@ -345,10 +354,6 @@ function wptm_tour_search_results() {
 add_action( 'portlet_tour_search_results', 'wptm_tour_search_results' );
 
 function wptm_tour_client_form() {
-	
-	if (!empty($_POST['book_flight'])) {
-		dv($_POST);
-	}
 ?>
 <div class="well clearfix">
     <div class="col-md-12 bg-greish">
