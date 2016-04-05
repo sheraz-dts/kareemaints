@@ -21,7 +21,7 @@ function wptm_tour_search() {
                        <label>From</label>
                        <select name="from_destination" class="form-control">
                         	<?php foreach($destinations as $destination){ ?>
-	                     		<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
+	                     		<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id'].'_'.$destination['city_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
                        		<?php } ?> 
                       	</select>
                     </div>  
@@ -29,7 +29,7 @@ function wptm_tour_search() {
                        <label>To</label>
                        <select name="to_destination" class="form-control">
 	                       <?php foreach($destinations as $destination){ ?>
-		                     	<option <?php echo $destination['city_id'] == '1380' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
+		                     	<option <?php echo $destination['city_id'] == '1380' ? 'selected': '';?> value="<?php echo $destination['city_id'].'_'.$destination['city_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
 		                   <?php } ?>
                       </select>
                     </div> 
@@ -47,7 +47,7 @@ function wptm_tour_search() {
                 <div class="row m-bot-20">
                 	<div class="col-md-4 col-sm-4 col-xs-4">
                     	<label>Adult</label>
-                		<select name="adult" class="form-control">
+                		<select name="adults" class="form-control">
                           <option selected="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -58,7 +58,7 @@ function wptm_tour_search() {
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-4">
                     	<label>Child</label>
-                		<select name="child" class="form-control">
+                		<select name="childs" class="form-control">
                           <option selected="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -69,7 +69,7 @@ function wptm_tour_search() {
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-4">
                     	<label>Infant</label>
-                		<select name="infant" class="form-control">
+                		<select name="infants" class="form-control">
                           <option selected="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -86,138 +86,8 @@ function wptm_tour_search() {
 add_action( 'portlet_tour_search', 'wptm_tour_search' );
 
 function wptm_tour_search_sr() {
-	global $destinations;
+	global $destinations;	
 ?>
-
-	<?php if (!empty($_POST)) {
-			$from_destination = !empty($_POST['from_destination']) ? $_POST['from_destination'] : '';
-			$to_destination = !empty($_POST['to_destination']) ? $_POST['to_destination'] : '';
-			$departing = !empty($_POST['departing']) ? $_POST['departing'] : '';
-			$returning = !empty($_POST['returning']) ? $_POST['returning'] : '';
-			$adult = $_POST['adult'];
-			$child = $_POST['child'];
-			$infant = $_POST['infant'];	
-		
-// 		    $querystr = "
-// 				SELECT p.* 
-// 				FROM $wpdb->posts p
-// 				RIGHT JOIN $wpdb->postmeta pm
-// 					ON p.ID = pm.post_id
-// 				WHERE p.post_type = 'tours'"; 
-				
-// 		    if (!empty($from_destination)) {
-// 				$querystr .= " AND (pm.meta_key = 'from' AND pm.meta_value = '$from_destination')";
-// 		    }
-		    
-// 		    if (!empty($to_destination)) {
-// 				$querystr .= " AND (pm.meta_key = 'to' AND pm.meta_value = '$to_destination')";
-// 		    }
-		    
-// 		    if (!empty($departing)) {
-// 				$querystr .= " AND (pm.meta_key = 'departing' AND pm.meta_value = '$departing')";		
-// 		    }
-		    
-// 		    if (!empty($returning)) {	
-// 				$querystr .= " AND (pm.meta_key = 'returning' AND pm.meta_value = '$returning')";
-// 		    }
-					
-// 			$querystr .= "	AND p.post_status = 'publish'
-// 							AND p.post_date < NOW()
-// 							GROUP BY p.ID	
-// 							ORDER BY p.post_date DESC
-// 			";
-// 			$pageposts = $wpdb->get_results($querystr, ARRAY_A); 
-			
-//  			$args = array(
-//  					'post_type' => 'tours',
-//  					'post_status' => 'publish',
-//  					'posts_per_page' => -1,
-//  					'meta_query' => array(
-//  							array(
-//  									'key' => 'from',
-//  									'value' => $from_destination,
-//  							),
-//  							array(
-//  									'key' => 'to',
-//  									'value' => $to_destination,
-//  							),
-//  							array(
-//  									'key' => 'departing',
-//  									'value' => $departing,
-//  							),	
-//  							array(
-//  									'key' => 'returning',
-//  									'value' => $returning,
-//  							),
-//  							array(
-//  									'key' => 'adults',
-//  									'value' => $adult,
-//  							),
-//  							array(
-// 									'key' => 'childs',
-//  									'value' => $child,
-//  							),
-//  							array(
-//  									'key' => 'infants',
-//  									'value' => $infant,
-//  							),
-//  					)
-//  			);
-//  			$query = new WP_Query( $args );
-// 			$rows = $query->get_posts();	
-
-			// args
-			$args = array(
-					'numberposts'	=> -1,
-					'post_type'		=> 'tours',
-					'meta_query'	=> array(
-							//'relation'		=> 'OR',
-							array(
-  									'key' => 'from',
-  									'value' => $from_destination,
-  							),
-							array(
-									'key' => 'to',
-									'value' => $to_destination,
-							),
-							array(
-									'key' => 'departing',
-									'value' => $departing,
-							),
-							array(
-									'key' => 'returning',
-									'value' => $returning,
-							),
-							array(
-									'key' => 'adults',
-									'value' => $adult,
-							),
-							array(
-									'key' => 'childs',
-									'value' => $child,
-							),
-							array(
-									'key' => 'infants',
-									'value' => $infant,
-							),
-					)
-			);
-				
-			// query
-			$the_query = new WP_Query( $args );			
-			
-			dv($the_query);
- 			die;
-	}
-	?>
-	
-	<?php //if($pageposts):?>
-	<?php //global $post; ?>
- 	<?php //foreach ($rows as $post): ?>
- 	<?php //setup_postdata($post); ?>
-
-    <?php //endforeach; ?>    
-    <?php //endif; ?>
 
 	 <div class="col-md-4 box-l">
 		<h2>Flights</h2>
@@ -300,150 +170,185 @@ function wptm_tour_search_sr() {
 add_action( 'portlet_tour_search_sr', 'wptm_tour_search_sr' );
 
 function wptm_tour_search_results() {
+	global $wpdb;
+	$meta_keys[] = 'to';
+	$meta_keys[] = 'from';
+	$meta_keys[] = 'departing';
+	$meta_keys[] = 'returning';
+	$meta_keys[] = 'adults';
+	$meta_keys[] = 'childs';
+	$meta_keys[] = 'infant';
+	
+	if (!empty($_POST)) {
+		$searchparams = array();
+		$searchstr = array();
+	
+		$querystr = "
+		SELECT DISTINCT $wpdb->posts.ID, $wpdb->posts.post_title, $wpdb->posts.post_status, $wpdb->posts.post_type
+
+		FROM $wpdb->posts, $wpdb->postmeta
+		WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
+			AND $wpdb->posts.post_status = 'publish'
+			AND $wpdb->posts.post_type = 'tours'";
+	
+		if (!empty($_POST['to_destination'])) {
+			$searchstr[] = "($wpdb->postmeta.meta_key = 'to' AND $wpdb->postmeta.meta_value = %s)";
+			$searchparams[] = $_POST['to_destination'];
+		}
+		
+		if (!empty($_POST['from_destination'])) {
+			$searchstr[] = "($wpdb->postmeta.meta_key = 'from' AND $wpdb->postmeta.meta_value = %s)";
+			$searchparams[] = $_POST['from_destination'];
+		}
+	
+		if (!empty($_POST['departing'])) {
+			$searchstr[] = "($wpdb->postmeta.meta_key = 'departing' AND $wpdb->postmeta.meta_value = %s)";
+			$searchparams[] = $_POST['departing'];
+		}
+	
+		if (!empty($_POST['returning'])) {
+			$searchstr[] = "($wpdb->postmeta.meta_key = 'returning' AND $wpdb->postmeta.meta_value = %s)";
+			$searchparams[] = $_POST['returning'];
+		}
+	
+		if (!empty($_POST['adults'])) {
+	    	$searchstr[] = "($wpdb->postmeta.meta_key = 'adults' AND $wpdb->postmeta.meta_value = %s)";
+	    	$searchparams[] = $_POST['adults'];
+		}
+	
+		if (!empty($_POST['childs'])) {
+			$searchstr[] = "($wpdb->postmeta.meta_key = 'childs' AND $wpdb->postmeta.meta_value = %s)";
+			$searchparams[] = $_POST['childs'];
+		}
+	
+		if (!empty($_POST['infants'])) {
+			$searchstr[] = "($wpdb->postmeta.meta_key = 'infants' AND $wpdb->postmeta.meta_value = %s)";
+			$searchparams[] = $_POST['infants'];
+		}
+	
+		if (!empty($searchstr)) {
+			$searchstr = " AND (" . implode(' OR ', $searchstr) . ")";
+		}
+
+		$querystr .= $searchstr; 
+		
+		$querystr .= "	AND $wpdb->posts.post_date < NOW()
+		GROUP BY $wpdb->posts.ID
+		ORDER BY $wpdb->posts.post_date DESC";
+
+		$tours = $wpdb->get_results($wpdb->prepare($querystr, $searchparams), ARRAY_A);
+	}	
 ?>
-<div class="well bg-color-white">
+<div class="well bg-color-white" id="flights_search_results">
    <div class="row">
        <?php do_action ( 'portlet_tour_search_sr' );?>
         <div class="col-md-8 box-2">
             <h1>Availability Results</h1>
             <h3>(Select from 7 outbound options found)</h3>
-            <div class="panel panel-default"> 
-                <div class="panel-heading"> 
-                    <h3 class="panel-title">Karachi, Pakistan <b>KHI</b> <i class="fa fa-long-arrow-right"></i>
-                    Islamabad, Pakistan <b>ISB</b></h3> 
-                </div> 
-                <div class="panel-body pad-bot-0">
-                    <div class="row m-bot-20">
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                            <i class="fa fa-plane fa-4"></i>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Departure</div> 
-                           <div>21 March, Mon</div> 
-                           <div><b>22:00</b></div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Arrival</div>
-                           <div>21 March, Mon</div> 
-                           <div><b>22:00</b></div> 
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Flight</div> 
-                           <div>NL127</div> 
-                           <div><b>Airbus 330-301</b></div>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <a class="btn btn-primary btn-md btn-block pull-right" role="button" data-toggle="collapse" href="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample">More</a>
-                        </div>
-                    </div>     
-                </div>
-                <div id="collapseExample-1" class="collapse" aria-expanded="false" style="height: 0px;"> 
-                    <div class="panel-color clearfix">
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                            
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Economy</div> 
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Flight Fare</div>
-                           <div><b>7,000</b></div> 
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Fees & Taxes</div> 
-                           <div><b>10,000</b></div>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <a class="btn btn-primary btn-md btn-block pull-right" role="button" data-toggle="collapse" href="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample">Hide</a>
-                        </div>
-                    </div> 
-                </div>
-                <div class="panel-body border-top">
-                    <div class="row">
-                        <div class="col-md-8"></div>
-                        <div class="col-md-2">
-                            <b>PKR 17,000</b>
-                        </div>
-                        <div class="col-md-2">
-                            <button autocomplete="off" class="btn btn-primary btn-md btn-block pull-right" data-loading-text="Loading..." id="loading-example-btn" type="button">Select</button>
-                        </div>
-                    </div>
-                </div> 
-            </div><!-- /paenl-end -->
-
-            <div class="panel panel-default"> 
-                <div class="panel-heading"> 
-                    <h3 class="panel-title">Karachi, Pakistan <b>KHI</b> <i class="fa fa-long-arrow-right"></i>
-                    Islamabad, Pakistan <b>ISB</b></h3> 
-                </div> 
-                <div class="panel-body pad-bot-0">
-                    <div class="row m-bot-20">
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                            <i class="fa fa-plane fa-4"></i>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Departure</div> 
-                           <div>21 March, Mon</div> 
-                           <div><b>22:00</b></div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Arrival</div>
-                           <div>21 March, Mon</div> 
-                           <div><b>22:00</b></div> 
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Flight</div> 
-                           <div>NL127</div> 
-                           <div><b>Airbus 330-301</b></div>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <a class="btn btn-primary btn-md btn-block pull-right" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">More</a>
-                        </div>
-                    </div>     
-                </div>
-                <div id="collapseExample" class="collapse" aria-expanded="false" style="height: 0px;"> 
-                    <div class="panel-color clearfix">
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                            
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Economy</div> 
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Flight Fare</div>
-                           <div><b>7,166</b></div> 
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                           <div>Fees & Taxes</div> 
-                           <div><b>3,634</b></div>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <a class="btn btn-primary btn-md btn-block pull-right" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Hide</a>
-                        </div>
-                    </div> 
-                </div>
-                <div class="panel-body border-top">
-                    <div class="row">
-                        <div class="col-md-8"></div>
-                        <div class="col-md-2">
-                            <b>PKR 10,400</b>
-                        </div>
-                        <div class="col-md-2">
-                            <button autocomplete="off" class="btn btn-primary btn-md btn-block pull-right" data-loading-text="Loading..." id="loading-example-btn" type="button">Select</button>
-                        </div>
-                    </div>
-                </div> 
-            </div><!-- /paenl-end -->
-
+            
+            <?php if (!empty($tours)) { ?>
+            	<?php foreach ($tours as $tour) { ?>
+            		<?php $fields = get_field_objects( $tour['ID'] );?>
+            		<?php 
+            			$from_arr = explode('_', $fields['from']['value']);
+            			$from_city = $fields['from']['choices'][$fields['from']['value']];
+            			$from_city_code = $from_arr[1];
+            			
+            			$to_arr = explode('_', $fields['to']['value']);
+            			$to_city = $fields['to']['choices'][$fields['to']['value']];
+            			$to_city_code = $to_arr[1];
+            		
+            		
+            		?>
+            		
+		            <div class="panel panel-default"> 
+		                <div class="panel-heading"> 
+		                    <h3 class="panel-title">
+		                    <?php echo $from_city; ?> <b><?php echo $from_city_code ?></b> <i class="fa fa-long-arrow-right"></i>
+		                    <?php echo $to_city; ?> <b><?php echo $to_city_code ?></b></h3> 
+		                </div> 
+		                <div class="panel-body pad-bot-0">
+		                    <div class="row m-bot-20">
+		                        <div class="col-md-1 col-sm-1 col-xs-1">
+		                            <i class="fa fa-plane fa-4"></i>
+		                        </div>
+		                        <div class="col-md-3 col-sm-3 col-xs-3">
+		                           <div>Departure</div> 
+		                           <div>21 March, Mon</div> 
+		                           <div><b>22:00</b></div>
+		                        </div>
+		                        <div class="col-md-3 col-sm-3 col-xs-3">
+		                           <div>Arrival</div>
+		                           <div>21 March, Mon</div> 
+		                           <div><b>22:00</b></div> 
+		                        </div>
+		                        <div class="col-md-3 col-sm-3 col-xs-3">
+		                           <div>Flight</div> 
+		                           <div>NL127</div> 
+		                           <div><b>Airbus 330-301</b></div>
+		                        </div>
+		                        <div class="col-md-2 col-sm-2 col-xs-12">
+		                            <a class="btn btn-primary btn-md btn-block pull-right" role="button" data-toggle="collapse" href="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample">More</a>
+		                        </div>
+		                    </div>     
+		                </div>
+		                <div id="collapseExample-1" class="collapse" aria-expanded="false" style="height: 0px;"> 
+		                    <div class="panel-color clearfix">
+		                        <div class="col-md-1 col-sm-1 col-xs-1">
+		                            
+		                        </div>
+		                        <div class="col-md-3 col-sm-3 col-xs-3">
+		                           <div>Economy</div> 
+		                        </div>
+		                        <div class="col-md-3 col-sm-3 col-xs-3">
+		                           <div>Flight Fare</div>
+		                           <div><b>7,000</b></div> 
+		                        </div>
+		                        <div class="col-md-3 col-sm-3 col-xs-3">
+		                           <div>Fees & Taxes</div> 
+		                           <div><b>10,000</b></div>
+		                        </div>
+		                        <div class="col-md-2 col-sm-2 col-xs-12">
+		                            <a class="btn btn-primary btn-md btn-block pull-right" role="button" data-toggle="collapse" href="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample">Hide</a>
+		                        </div>
+		                    </div> 
+		                </div>
+		                <div class="panel-body border-top">
+		                    <div class="row">
+		                        <div class="col-md-8"></div>
+		                        <div class="col-md-2">
+		                            <b>PKR 17,000</b>
+		                        </div>
+		                        <div class="col-md-2">
+		                            <button autocomplete="off" class="btn btn-primary btn-md btn-block pull-right button-select" data-loading-text="Loading..." id="loading-example-btn" type="button">Select</button>
+		                        </div>
+		                    </div>
+		                </div> 
+		            </div><!-- /panel-end -->
+	            <?php } ?>
+            <?php } ?>
         </div><!-- /col-8-end -->
    </div><!-- /row-end -->
+	<form name="flight_form" action="<?php the_permalink('40') ;?>" method="post" class="flight_form">
+		<input name="tour_id" id="tour_id" type="hidden" value="38">
+		<input name="adults" id="adults" type="hidden" value="3">
+		<input name="childs" id="childs" type="hidden" value="2">
+		<input name="infants" id="infants" type="hidden" value="1">
+		<input name="class_type" id="class_type" type="hidden" value="1">
+		<input name="book_flight" id="submit" type="submit" value="book" style="display:none">
+	</form>
 </div><!-- /well-end -->
+
 <?php
 }
 
 add_action( 'portlet_tour_search_results', 'wptm_tour_search_results' );
 
 function wptm_tour_client_form() {
+	
+	if (!empty($_POST['book_flight'])) {
+		dv($_POST);
+	}
 ?>
 <div class="well clearfix">
     <div class="col-md-12 bg-greish">

@@ -9,7 +9,7 @@ Template Name: Search Results
 <?php get_header(); ?>
 	
     <div class="well bg-color-white">
-    	<form action="<?php the_permalink() ;?>" method="post">
+    	<form action="<?php the_permalink('40') ;?>" method="post">
         	<?php do_action ( 'portlet_tour_search_results' )?>
         </form>
     </div><!-- /well-end -->

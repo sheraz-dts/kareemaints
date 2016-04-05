@@ -13,7 +13,7 @@ function get_from_destinations( $params = array() ) {
 	$limit_max = !empty($params['max']) ? $params['max'] : '100';
 	
 	$sql = "SELECT 
-				ct.name as city_name, ct.id as city_id, 
+				ct.name as city_name, ct.id as city_id, ct.code as city_code, 
 				co.name as country_name, co.country_id as country_id, co.iso_code_3 as country_code   
 			FROM wp_city ct
 			INNER JOIN wp_country co

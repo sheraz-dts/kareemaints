@@ -49,6 +49,33 @@
         });
     });
     </script>
+    
+	<script type="text/javascript">
+		$(function () {
+			$('.button-select').click(function () {
+				var tour_id = $(this).attr('data-tour-id');
+				var adults = $(this).attr('data-adults');
+				var childs = $(this).attr('data-childs');
+				var infants = $(this).attr('data-infants');
+				var class_type = $(this).attr('data-class');
+	
+				var form = $(this).closest('form');
+	
+				var confirmBook = confirm("Are you sure to book this flight..?");
+	
+				if (confirmBook) {
+	// 				form.find('#tour_id').val(tour_id);
+	// 				form.find('#adults').val(adults);
+	// 				form.find('#childs').val(childs);
+	// 				form.find('#infants').val(infants);
+	// 				form.find('#class_type').val(class_type);
+
+					console.log(form.find('#submit').attr('name'));
+					form.find('#submit').click();
+				}
+			});	
+		});
+	</script>    
 	
 </body>
 
