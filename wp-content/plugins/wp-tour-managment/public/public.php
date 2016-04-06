@@ -6,89 +6,90 @@
 function wptm_tour_search() {
 	global $destinations;
 	?>
-		<div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button type="button" id="stars" class="btn btn-default btn-group-justified" href="#tab1" data-toggle="tab">
-                    <div><i class="glyphicon glyphicon-star"></i>Book a Flight</div>
-                </button>
-            </div>
-        </div><!-- /btn-pref-end -->
-        <div class="well">
-          <div class="tab-content clearfix">
-            <div class="tab-pane fade in active" id="tab1">
-                <div class="row m-bot-20">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                       <label>From</label>
-                       <select name="from_destination" class="form-control">
-                        	<?php foreach($destinations as $destination){ ?>
-	                     		<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id'].'_'.$destination['city_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
-                       		<?php } ?> 
-                      	</select>
-                    </div>  
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                       <label>To</label>
-                       <select name="to_destination" class="form-control">
-	                       <?php foreach($destinations as $destination){ ?>
-		                     	<option <?php echo $destination['city_id'] == '1380' ? 'selected': '';?> value="<?php echo $destination['city_id'].'_'.$destination['city_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
-		                   <?php } ?>
-                      </select>
-                    </div> 
-                </div><!-- /row-end -->
-                <div class="row m-bot-20">
-                	<div class="col-md-6 col-sm-6 col-xs-6">
-                    	<label>Departing</label>
-                		<input type="text" name="departing" id="deprting" placeholder="mm/dd/yyyy" class="form-control datepicker">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                    	<label>Returning</label>
-                		<input type="text" name="returning" id="returning" placeholder="mm/dd/yyyy" class="form-control datepicker">
-                    </div>
-                </div><!-- /row-end --> 
-                <div class="row m-bot-20">
-                	<div class="col-md-4 col-sm-4 col-xs-4">
-                    	<label>Adult</label>
-                		<select name="adults" class="form-control">
-                          <option selected="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                    	<label>Child</label>
-                		<select name="childs" class="form-control">
-                          <option selected="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                    	<label>Infant</label>
-                		<select name="infants" class="form-control">
-                          <option selected="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                      </select>
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-4">
-                    <label>Class</label>
-                    <select class="form-control">
-                      <option selected="">Economy</option>
-                      <option>Business</option>
-                      <option>Economy</option>
-                      <option>Group</option>
-                  </select>
-                </div>
-                </div><!-- /row-end --> 
-                <input class="btn btn-default" name="submit" type="submit" value="Search">   
-            </div><!-- /tab-1-end -->
-          </div><!-- /tab-content-end -->
-       </div><!-- /well-end -->
+		<form action="<?php the_permalink('29');?>" method="post" name="tour_search">
+			<div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
+	            <div class="btn-group" role="group">
+	                <button type="button" id="stars" class="btn btn-default btn-group-justified" href="#tab1" data-toggle="tab">
+	                    <div><i class="glyphicon glyphicon-star"></i>Book a Flight</div>
+	                </button>
+	            </div>
+	        </div><!-- /btn-pref-end -->
+	        <div class="well">
+	          <div class="tab-content clearfix">
+	            <div class="tab-pane fade in active" id="tab1">
+	                <div class="row m-bot-20">
+	                    <div class="col-md-6 col-sm-6 col-xs-6">
+	                       <label>From</label>
+	                       <select name="from_destination" class="form-control">
+	                        	<?php foreach($destinations as $destination){ ?>
+		                     		<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
+	                       		<?php } ?> 
+	                      	</select>
+	                    </div>  
+	                    <div class="col-md-6 col-sm-6 col-xs-6">
+	                       <label>To</label>
+	                       <select name="to_destination" class="form-control">
+		                       <?php foreach($destinations as $destination){ ?>
+			                     	<option <?php echo $destination['city_id'] == '1380' ? 'selected': '';?> value="<?php echo $destination['city_id']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>	
+			                   <?php } ?>
+	                      </select>
+	                    </div> 
+	                </div><!-- /row-end -->
+	                <div class="row m-bot-20">
+	                	<div class="col-md-6 col-sm-6 col-xs-6">
+	                    	<label>Departing</label>
+	                		<input type="text" name="departing" id="deprting" placeholder="mm/dd/yyyy" class="form-control datepicker">
+	                    </div>
+	                    <div class="col-md-6 col-sm-6 col-xs-6">
+	                    	<label>Returning</label>
+	                		<input type="text" name="returning" id="returning" placeholder="mm/dd/yyyy" class="form-control datepicker">
+	                    </div>
+	                </div><!-- /row-end --> 
+	                <div class="row m-bot-20">
+	                	<div class="col-md-4 col-sm-4 col-xs-4">
+	                    	<label>Adult</label>
+	                		<select name="adults" class="form-control">
+	                          <option selected="0">0</option>
+	                          <option value="1">1</option>
+	                          <option value="2">2</option>
+	                          <option value="3">3</option>
+	                          <option value="4">4</option>
+	                          <option value="5">5</option>
+	                      </select>
+	                    </div>
+	                    <div class="col-md-4 col-sm-4 col-xs-4">
+	                    	<label>Child</label>
+	                		<select name="childs" class="form-control">
+	                          <option selected="0">0</option>
+	                          <option value="1">1</option>
+	                          <option value="2">2</option>
+	                          <option value="3">3</option>
+	                          <option value="4">4</option>
+	                          <option value="5">5</option>
+	                      </select>
+	                    </div>
+	                    <div class="col-md-4 col-sm-4 col-xs-4">
+	                    	<label>Infant</label>
+	                		<select name="infants" class="form-control">
+	                          <option selected="0">0</option>
+	                          <option value="1">1</option>
+	                          <option value="2">2</option>
+	                      </select>
+	                    </div>
+	                    <div class="col-md-3 col-sm-4 col-xs-4">
+	                    <label>Class</label>
+	                    <select class="form-control">
+	                      <option value="economy" selected>Economy</option>
+	                      <option value="business">Business</option>
+	                      <option value="groups">Groups</option>
+	                  </select>
+	                </div>
+	                </div><!-- /row-end --> 
+	                <input class="btn btn-default" name="submit" type="submit" value="Search">   
+	            </div><!-- /tab-1-end -->
+	          </div><!-- /tab-content-end -->
+	       </div><!-- /well-end -->
+       </form>
 <?php
 }
 
@@ -189,9 +190,11 @@ function wptm_tour_search_results() {
 	$meta_keys[] = 'infant';
 	
 	if (!empty($_POST)) {
+// 		dv($_POST);
+// 		die;
 		$searchparams = array();
 		$searchstr = array();
-	
+
 		$querystr = "
 		SELECT DISTINCT $wpdb->posts.ID, $wpdb->posts.post_title, $wpdb->posts.post_status, $wpdb->posts.post_type
 
@@ -200,51 +203,52 @@ function wptm_tour_search_results() {
 			AND $wpdb->posts.post_status = 'publish'
 			AND $wpdb->posts.post_type = 'tours'";
 	
-		if (!empty($_POST['to_destination'])) {
-			$searchstr[] = "($wpdb->postmeta.meta_key = 'to' AND $wpdb->postmeta.meta_value = %s)";
-			$searchparams[] = $_POST['to_destination'];
-		}
+// 		if (!empty($_POST['to_destination'])) {
+// 			$searchstr[] = "($wpdb->postmeta.meta_key = 'to' AND $wpdb->postmeta.meta_value = %s)";
+// 			$searchparams[] = $_POST['to_destination'];
+// 		}
 		
-		if (!empty($_POST['from_destination'])) {
-			$searchstr[] = "($wpdb->postmeta.meta_key = 'from' AND $wpdb->postmeta.meta_value = %s)";
-			$searchparams[] = $_POST['from_destination'];
-		}
+// 		if (!empty($_POST['from_destination'])) {
+// 			$searchstr[] = "($wpdb->postmeta.meta_key = 'from' AND $wpdb->postmeta.meta_value = %s)";
+// 			$searchparams[] = $_POST['from_destination'];
+// 		}
 	
-		if (!empty($_POST['departing'])) {
-			$searchstr[] = "($wpdb->postmeta.meta_key = 'departing' AND $wpdb->postmeta.meta_value = %s)";
-			$searchparams[] = $_POST['departing'];
-		}
+// 		if (!empty($_POST['departing'])) {
+// 			$searchstr[] = "($wpdb->postmeta.meta_key = 'departing' AND $wpdb->postmeta.meta_value = %s)";
+// 			$searchparams[] = $_POST['departing'];
+// 		}
 	
-		if (!empty($_POST['returning'])) {
-			$searchstr[] = "($wpdb->postmeta.meta_key = 'returning' AND $wpdb->postmeta.meta_value = %s)";
-			$searchparams[] = $_POST['returning'];
-		}
+// 		if (!empty($_POST['returning'])) {
+// 			$searchstr[] = "($wpdb->postmeta.meta_key = 'returning' AND $wpdb->postmeta.meta_value = %s)";
+// 			$searchparams[] = $_POST['returning'];
+// 		}
 	
-		if (!empty($_POST['adults'])) {
-	    	$searchstr[] = "($wpdb->postmeta.meta_key = 'adults' AND $wpdb->postmeta.meta_value = %s)";
-	    	$searchparams[] = $_POST['adults'];
-		}
+// 		if (!empty($_POST['adults'])) {
+// 	    	$searchstr[] = "($wpdb->postmeta.meta_key = 'adults' AND $wpdb->postmeta.meta_value = %s)";
+// 	    	$searchparams[] = $_POST['adults'];
+// 		}
 	
-		if (!empty($_POST['childs'])) {
-			$searchstr[] = "($wpdb->postmeta.meta_key = 'childs' AND $wpdb->postmeta.meta_value = %s)";
-			$searchparams[] = $_POST['childs'];
-		}
+// 		if (!empty($_POST['childs'])) {
+// 			$searchstr[] = "($wpdb->postmeta.meta_key = 'childs' AND $wpdb->postmeta.meta_value = %s)";
+// 			$searchparams[] = $_POST['childs'];
+// 		}
 	
-		if (!empty($_POST['infants'])) {
-			$searchstr[] = "($wpdb->postmeta.meta_key = 'infants' AND $wpdb->postmeta.meta_value = %s)";
-			$searchparams[] = $_POST['infants'];
-		}
+// 		if (!empty($_POST['infants'])) {
+// 			$searchstr[] = "($wpdb->postmeta.meta_key = 'infants' AND $wpdb->postmeta.meta_value = %s)";
+// 			$searchparams[] = $_POST['infants'];
+// 		}
 	
-		if (!empty($searchstr)) {
-			$searchstr = " AND (" . implode(' OR ', $searchstr) . ")";
-		}
+// 		if (!empty($searchstr)) {
+// 			$searchstr = " AND (" . implode(' AND ', $searchstr) . ")";
+// 		}
 
-		$querystr .= $searchstr; 
+// 		$querystr .= $searchstr; 
 		
 		$querystr .= "	AND $wpdb->posts.post_date < NOW()
 		GROUP BY $wpdb->posts.ID
 		ORDER BY $wpdb->posts.post_date DESC";
-
+// echo $wpdb->prepare($querystr, $searchparams);
+// die;
 		$tours = $wpdb->get_results($wpdb->prepare($querystr, $searchparams), ARRAY_A);
 	}	
 ?>
