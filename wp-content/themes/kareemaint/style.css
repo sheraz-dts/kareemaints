@@ -17,6 +17,8 @@ Licensed under the MIT license.
 
 .pad-top-10
 {padding-top: 10px;}
+.mar-top-bot-30
+{margin-bottom: 20px; margin-top: 20px;}
 .m-top-10-bot-20
 {margin-top:10px; margin-bottom:20px;}
 .m-top-40-bot-30
@@ -86,6 +88,27 @@ Licensed under the MIT license.
 {font-weight: bold; margin: 0;}
 .spans
 {font-style:italic; color: rgba(0,0,0,.4);}
+.c-txt
+{background: #fff; border: 1px solid rgba(0,0,0,.1); margin: 0;}
+.c-txt h1
+{border-bottom: 1px solid rgba(89,89,89,.4); font-size: 25px; margin: 0 0 12px; padding: 12px 0;}
+.c-txt .circle
+{background: #fff;  border: 1px solid rgba(89,89,89,.65); border-radius: 50%; display: inline-block; height: 35px; padding: 7px 0 0; 
+ width: 35px;}
+.c-txt .fa-long-arrow-right
+{padding-top: 4px;} 
+.c-txt .r
+{left: 54px; position: absolute; top: 7px;}
+.c-txt .l
+{left: 52px; position: absolute; top: 14px;}
+.c-txt h2
+{font-size: 20px; font-weight: 400; margin: 0;}
+.c-txt hr
+{border: 0; margin-top: 0; margin-bottom: 2px;}
+.arrival-time,.depart-time,.airline-code
+{font-size: 13px; font-weight: lighter;}
+.dotted-line
+{border-bottom: 1px dotted rgba(89,89,89,.55); margin-bottom: 30px; padding-top: 10px;}
 
 html {
   font-family: sans-serif;
