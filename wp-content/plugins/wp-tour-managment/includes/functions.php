@@ -26,6 +26,28 @@ function get_from_destinations( $params = array() ) {
 	return $destinations;
 }
 
+
+function get_bookings_data( $params = array() ) {
+	// global
+	global $wpdb;
+
+	$limit_min = !empty($params['min']) ? $params['min'] : '0';
+	$limit_max = !empty($params['max']) ? $params['max'] : '100';
+
+	$sql = "SELECT
+				customer_name, customer_email, ct.code as city_code,
+				co.name as country_name, co.country_id as country_id, co.iso_code_3 as country_code
+			FROM wp_bookings ct
+			INNER JOIN wp_country co
+				ON ct.country_code = co.iso_code_3
+			ORDER BY city_name ASC
+			LIMIT %d,%d";
+
+	$destinations = $wpdb->get_results($wpdb->prepare($sql, $limit_min, $limit_max), ARRAY_A);
+
+	return $destinations;
+}
+
 function dv( $var = array() ) {
 	echo "<pre>";
 		print_r($var);

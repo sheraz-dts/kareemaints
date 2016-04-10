@@ -171,6 +171,7 @@ if ( is_network_admin() )
 $admin_body_class .= ' no-customize-support no-svg';
 
 ?>
+
 </head>
 <?php
 /**

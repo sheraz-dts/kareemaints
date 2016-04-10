@@ -6,8 +6,8 @@
 function wptm_tour_search() {
 	global $destinations;
 	?>
-	
-	<form action="<?php the_permalink('29');?>" method="post" name="tour_search">
+		
+	<form action="<?php the_permalink('29');?>" method="post" name="tour_search" id=tour_search>
 		<div class="btn-pref btn-group btn-group-lg" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button type="button" id="stars" class="btn btn-default btn-group-justified" href="#tab1" data-toggle="tab">
@@ -18,10 +18,22 @@ function wptm_tour_search() {
         <div class="well">
           <div class="tab-content clearfix">
             <div class="tab-pane fade in active" id="tab1">
+            	<div class="row m-bot-20">
+            	<div class="col-md-12">
+					<label class="radio-inline"> 
+						<input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions">
+						One Way
+		            </label> 
+	                <label class="radio-inline"> 
+	                    <input checked="checked" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">
+	                    Roundtrip 
+	                </label> 
+	             </div><!-- /col-md-12-end -->
+ 			</div><!-- /row-end -->
                 <div class="row m-bot-20">
                     <div class="col-md-6 col-sm-6 col-xs-6">
                        <label>From</label>
-                       <select name="from_destination" class="form-control">
+                       <select id="from_destination" name="from_destination" class="form-control validate[required]">
                         	<?php foreach($destinations as $destination){ ?>
 	                     		<option <?php echo $destination['city_id'] == '2822' ? 'selected': '';?> value="<?php echo $destination['city_id'].'_'.$destination['city_code']?>"><?php echo $destination['city_name']?>,&nbsp;<?php echo $destination['country_name']?></option>
                        		<?php } ?> 
@@ -41,7 +53,7 @@ function wptm_tour_search() {
                     	<label>Departing</label>
                 		<input type="text" name="departing" id="deprting" placeholder="mm/dd/yyyy" class="form-control datepicker">
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6 whole-show whole-disap">
                     	<label>Returning</label>
                 		<input type="text" name="returning" id="returning" placeholder="mm/dd/yyyy" class="form-control datepicker">
                     </div>
@@ -80,7 +92,7 @@ function wptm_tour_search() {
                     <div class="col-md-3 col-sm-3 col-xs-3">
                     <label>Class</label>
                     <select class="form-control">
-                      <option selected="">Economy</option>
+                      <option selected=""></option>
                       <option>Business</option>
                       <option>Economy</option>
                       <option>Group</option>
@@ -372,11 +384,11 @@ function wptm_tour_client_form() {
         <div class="row m-bot-20">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <label>Adult Full Name*</label>
-                <input type="text" placeholder="Adult Full Name" class="form-control">
+                <input type="text" id="only_name" placeholder="Adult Full Name" class="form-control">
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <label>Date Of Birth</label>
-                <input type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
+                <input type="text" placeholder="mm/dd/yyyy" class="form-control datepickerz">
             </div>
             <div class="col-md-4">
                 <label>Title</label>
@@ -391,7 +403,7 @@ function wptm_tour_client_form() {
         <div class="row m-bot-20 t-text">
             <div class="col-md-4">
                 <label>CNIC*</label>
-                <input type="text" class="form-control" placeholder="43259568129912">
+                <input name="number" type="text" class="form-control" placeholder="43259568129912">
                 <div class="spans">Enter CNIC or Passport Number</div>
             </div>
             <div class="col-md-4">
@@ -422,16 +434,22 @@ function wptm_tour_client_form() {
                 </span>
             </div>
             <div class="col-md-4">
-                <span class="little-size">Full Name*</span>
-                <input type="text" placeholder="Full Name" class="form-control">
+                <span class="little-size">Select City*</span>
+                <select class="form-control">
+                	<option value=""></option>
+                    <option value="KHI">Karachi</option>
+                    <option value="ISB">Islamabad</option>
+                    <option value="LHR">Lahore</option>
+                    <option value="MLT">Multan</option>
+                </select>
             </div>
             <div class="col-md-4">
                 <span class="little-size">Select Agent*</span>
                 <select class="form-control">
-                    <option selected="selected" value="S">Select</option>
-                    <option value="KHI">Karachi</option>
-                    <option value="LHR">Lahore</option>
-                    <option value="MLT">Multan</option>
+                    <option value=""></option>
+                    <option value="KHI">Faraz</option>
+                    <option value="LHR">Fareed</option>
+                    <option value="MLT">Luqman</option>
                 </select>
             </div>
         </div><!-- /row-end --> 

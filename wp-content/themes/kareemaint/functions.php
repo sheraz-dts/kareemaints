@@ -299,3 +299,10 @@ function simple_boostrap_sidebar_right_classes() {
     $nbr_sidebars = (is_active_sidebar('sidebar-left') ? 1 : 0) + (is_active_sidebar('sidebar-right') ? 1 : 0);
     echo 'col-md-'.($nbr_sidebars == 2 ? 3 : 4);
 }
+
+
+add_action( 'admin_menu', 'my_booking_menu' );
+
+function my_booking_menu() {
+	add_menu_page( 'Bookings', 'Bookings', 'manage_options', 'wp-tour-managment/admin/bookings.php', 'wptm_bookings_admin', 'dashicons-tickets', 50  );
+}
