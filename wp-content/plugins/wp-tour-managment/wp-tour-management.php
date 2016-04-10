@@ -60,6 +60,46 @@ if ( ! defined( 'WPTM_VALIDATE_CONFIGURATION' ) ) {
 	define( 'WPTM_VALIDATE_CONFIGURATION', true );
 }
 
+if ( ! defined( 'FLIGHT_CLASS_BUSINESS' ) ) {
+	define( 'FLIGHT_CLASS_BUSINESS', 'business' );
+}
+
+if ( ! defined( 'FLIGHT_CLASS_ECONOMY' ) ) {
+	define( 'FLIGHT_CLASS_ECONOMY', 'economy' );
+}
+
+if ( ! defined( 'FLIGHT_CLASS_GROUPS' ) ) {
+	define( 'FLIGHT_CLASS_GROUPS', 'groups' );
+}
+
+if ( ! defined( 'CURRENCY_SYMBOL' ) ) {
+	define( 'CURRENCY_SYMBOL', 'PKR' );
+}
+
+if ( ! defined( 'ROUTE_ONE_WAY_TRIP' ) ) {
+	define( 'ROUTE_ONE_WAY_TRIP', 'one way' );
+}
+
+if ( ! defined( 'ROUTE_ROUND_TRIP' ) ) {
+	define( 'ROUTE_ROUND_TRIP', 'round' );
+}
+
+if ( ! defined( 'ADMIN_EMAIL_FLIGHT_BOOKING_SUBJECT' ) ) {
+	define( 'ADMIN_EMAIL_FLIGHT_BOOKING_SUBJECT', 'New Flight Booking from a Customer' );
+}
+
+if ( ! defined( 'ADMIN_EMAIL_FLIGHT_BOOKING_CONTENT' ) ) {
+	define( 'ADMIN_EMAIL_FLIGHT_BOOKING_CONTENT', 'Dear Admin, <br><br>A flight booking request is received from a customer with following details: {booking_details} <br><br><br><br>Kareema International' );
+}
+
+if ( ! defined( 'CUSTOMER_EMAIL_FLIGHT_BOOKING_SUBJECT' ) ) {
+	define( 'CUSTOMER_EMAIL_FLIGHT_BOOKING_SUBJECT', 'Thank you for booking flight with Kareema International.' );
+}
+
+if ( ! defined( 'CUSTOMER_EMAIL_FLIGHT_BOOKING_CONTENT' ) ) {
+	define( 'CUSTOMER_EMAIL_FLIGHT_BOOKING_CONTENT', 'Dear {customer_name}, <br><br>Thank you for booking flight with Kareema International. This is to inform you that we have received your flight booking request, one of our dedicated sales person will get in touch with you soon. <br><br>Best Regards, <br><br>Kareema International' );
+}
+
 // Deprecated, not used in the plugin core. Use WPTM_plugin_url() instead.
 define( 'WPTM_PLUGIN_URL', untrailingslashit( plugins_url( '', WPTM_PLUGIN ) ) );
 

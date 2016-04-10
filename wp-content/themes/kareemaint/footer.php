@@ -57,23 +57,55 @@
 				var adults = $(this).attr('data-adults');
 				var childs = $(this).attr('data-childs');
 				var infants = $(this).attr('data-infants');
-				var class_type = $(this).attr('data-class');
+				var flight_class = $(this).attr('data-flight-class');
+				var route_type = $(this).attr('data-route-type');
 	
-				var form = $(this).closest('form');
+				var form = $('.flight_form');
 	
 				var confirmBook = confirm("Are you sure to book this flight..?");
 	
 				if (confirmBook) {
-	// 				form.find('#tour_id').val(tour_id);
-	// 				form.find('#adults').val(adults);
-	// 				form.find('#childs').val(childs);
-	// 				form.find('#infants').val(infants);
-	// 				form.find('#class_type').val(class_type);
+					form.find('#tour_id').val(tour_id);
+					form.find('#adults').val(adults);
+					form.find('#childs').val(childs);
+					form.find('#infants').val(infants);
+					form.find('#flight_class').val(flight_class);
+					form.find('#route_type').val(route_type);
 
-					console.log(form.find('#submit').attr('name'));
 					form.find('#submit').click();
+				} else {
+					form.find('#tour_id').val('');
+					form.find('#adults').val('');
+					form.find('#childs').val('');
+					form.find('#infants').val('');
+					form.find('#flight_class').val('');
+					form.find('#route_type').val('');
 				}
-			});	
+			});
+
+			$('#booking_agent').change(function (e) {
+				var agent = $(this).val();
+
+				if (agent != '') {
+					if (agent == 'KHI') {
+						agent_email = 'agent1@email.com';
+						agent_name = 'Karachi Aagent';
+					}
+					
+					if (agent == 'LHR') {
+						agent_email = 'agent2@email.com';
+						agent_name = 'Lahore Aagent';
+					}
+					
+					if (agent == 'MLT') {
+						agent_email = 'agent3@email.com';
+						agent_name = 'Multan Aagent';
+					}
+
+					$('#agent_email').val(agent_email);
+					$('#agent_name').val(agent_name);
+				}
+			});
 		});
 	</script>    
 	
