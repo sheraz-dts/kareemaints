@@ -89,7 +89,7 @@ if ( ! defined( 'ADMIN_EMAIL_FLIGHT_BOOKING_SUBJECT' ) ) {
 }
 
 if ( ! defined( 'ADMIN_EMAIL_FLIGHT_BOOKING_CONTENT' ) ) {
-	define( 'ADMIN_EMAIL_FLIGHT_BOOKING_CONTENT', 'Dear Admin, <br><br>A flight booking request is received from a customer with following details: {booking_details} <br><br><br><br>Kareema International' );
+	define( 'ADMIN_EMAIL_FLIGHT_BOOKING_CONTENT', 'Dear Admin, <br><br>A flight booking request is received from a customer with following details:<br><br><br>{booking_details} <br><br><br><br>Kareema International' );
 }
 
 if ( ! defined( 'CUSTOMER_EMAIL_FLIGHT_BOOKING_SUBJECT' ) ) {

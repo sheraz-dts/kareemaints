@@ -134,105 +134,142 @@ function getRouteType($route_type = '') {
 }
 
 function getBookingDetailsTemplate($data = array()) {
-?>
+	$template = '';
+	$agent_email = $data['agent_email'];
+	$agent_name = $data['agent_name'];
+	$tour_id = $data['tour_id'];
+	$tour = get_post( $tour_id, ARRAY_A );
+	$flight_class = $data['flight_class'];
+	$flight_no = $data['flight_no']['value'];
+	$aeroplane_description = $data['aeroplane_description']['value'];
+	$route_type = $data['route_type'];
+	$customer_name = $data['customer_name'];
+	$customer_email = $data['customer_email'];
+	$customer_phone = $data['customer_phone'];
+	$total_tickets = $data['total_tickets'];
+	$total_amount = $data['total_amount'];
+	$booking_date = $data['date_created'];
+
+	$departing = $data['departing']['value'];
+	$departure_time = $data['departure_time']['value'];
+	$arrival_time = $data['arrival_time']['value'];
+	
+	$template .= '<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<style type="text/css">
+.m-bot-20
+{margin-bottom:20px !important;}
+.m-top-10-bot-20
+{margin-top:10px; margin-bottom:20px;}
+.border-b
+{border-bottom: 1px solid rgba(89,89,89,.4);}
+.m-top-40-bot-30
+{margin-top:40px; margin-bottom:30px;}
+.border-d
+{border-bottom: 1px dotted rgba(89,89,89,.4);}
+</style>
+</head>
+<body>';
+
+$template .= '
 <div class="well clearfix">
     <div class="col-md-8 bg-greish">
         <div class="row">
             <div class="col-md-12">
-                <h4>Passangers</h4>
+                <h4>Booking Details</h4>
             </div>
         </div><!-- /row-end --> 
-        <div class="border-b m-top-10-bot-20"></div>
-        <div class="row m-bot-20">
-        	<div class="col-md-6">
-            	<div class="row">
-                    <div class="col-md-5 text-right">
-                        <label style="margin:10px 0 0;">Adult Full Name</label>
-                    </div>
-                    <div class="col-md-7">
-                        <span class="form-control">Faraz Alam</span>
-                    </div>
-                </div><!-- -/row-end -->
-            </div><!-- -/col-md-6-end -->
-        	<div class="col-md-6">
-            	<div class="row">
-                    <div class="col-md-5 text-right">
-                        <label style="margin:10px 0 0;">Date Of Birth</label>
-                    </div>
-                    <div class="col-md-7">
-                        <span class="form-control">06/28/1985</span>
-                    </div>
-                </div><!-- -/row-end -->
-            </div><!-- -/col-md-6-end -->
-        </div><!-- /row-end -->
+        <div class="border-b m-top-10-bot-20"></div>';
 
-        <div class="row m-bot-20"> 
-        	<div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-5 text-right">
-                        <label>CNIC</label>
-                    </div>
-                    <div class="col-md-7">
-                        <span class="form-control">4210109553489</span>
-                    </div>
-                </div><!-- -/row-end -->
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-5 text-right">
-                        <label style="margin:10px 0 0;">Title</label>
-                    </div>
-                    <div class="col-md-7">
-                        <span class="form-control">Mr</span>
-                    </div>
-                </div><!-- /row-end -->
-        	</div>
-        </div><!-- /row-end --> 
-        
+$template .= '
         <div class="row m-bot-20">
-            <div class="col-md-6 text-right">
-            	<label>Wheel Chair Required</label>
-            </div> 
-            <div class="col-md-6">
-                <span class="form-control">Yes</span>  
-            </div>
-        </div><!-- /row-end -->
-        
-        <div class="border-d m-top-40-bot-30"></div>
-        
-        <div class="row m-bot-20"> 
         	<div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 text-right">
-                        <label style="margin:10px 0 0;">City</label>
+                        <label style="margin:10px 0 0;">Route</label>
                     </div>
                      <div class="col-md-7">
-                        <span class="form-control">Karachi</span>
+                        <span class="form-control">'.$tour['post_title'].'</span>
                     </div>
                 </div><!-- /row-end -->
             </div>
         	<div class="col-md-6">
                 <div class="row">
 					<div class="col-md-5 text-right">
-                		<label style="margin:10px 0 0;">Agent Email</label>
+                		<label style="margin:10px 0 0;">Total Tickects</label>
             		</div>
                     <div class="col-md-7">
-                        <span class="form-control">faraz.agst@gmail.com</span>
-                    </div>	
+                        <span class="form-control">'.$total_tickets.'</span>
+                    </div>
                </div><!-- /row-end -->
             </div>
-        </div><!-- /row-end -->  
- 
-        <div class="border-d m-top-40-bot-30"></div>
-        
+        </div><!-- /row-end -->
+
+        <div class="border-d m-top-40-bot-30"></div>';
+
+$template .= '
         <div class="row m-bot-20">
+        	<div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 text-right">
+                        <label style="margin:10px 0 0;">Customer Name</label>
+                    </div>
+                     <div class="col-md-7">
+                        <span class="form-control">'.$customer_name.'</span>
+                    </div>
+                </div><!-- /row-end -->
+            </div>
+        	<div class="col-md-6">
+                <div class="row">
+					<div class="col-md-5 text-right">
+                		<label style="margin:10px 0 0;">Customer Email</label>
+            		</div>
+                    <div class="col-md-7">
+                        <span class="form-control">'.$customer_email.'</span>
+                    </div>
+               </div><!-- /row-end -->
+            </div>
+        </div><!-- /row-end -->
+
+        <div class="border-d m-top-40-bot-30"></div>';
+
+$template .= '
+        <div class="row m-bot-20">
+        	<div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 text-right">
+                        <label style="margin:10px 0 0;">Customer Phone</label>
+                    </div>
+                     <div class="col-md-7">
+                        <span class="form-control">'.$customer_phone.'</span>
+                    </div>
+                </div><!-- /row-end -->
+            </div>
+        	<div class="col-md-6">
+                <div class="row">
+					<div class="col-md-5 text-right">
+                		<label style="margin:10px 0 0;">Flight Class</label>
+            		</div>
+                    <div class="col-md-7">
+                        <span class="form-control">'.ucfirst($flight_class).'</span>
+                    </div>
+               </div><!-- /row-end -->
+            </div>
+        </div><!-- /row-end -->
+
+        <div class="border-d m-top-40-bot-30"></div>';
+
+$template .= '
+		<div class="row m-bot-20">
         	<div class="col-md-6">
                 <div class="row"> 
                     <div class="col-md-5 text-right">
                         <label style="margin:0 0 0;">Aeroplane Description</label>
                     </div>
                     <div class="col-md-7">
-                        <span class="form-control">Airbus 399</span>
+                        <span class="form-control">'.$aeroplane_description.'</span>
                     </div>
                 </div><!-- /row-end -->
             </div>
@@ -242,12 +279,273 @@ function getBookingDetailsTemplate($data = array()) {
                         <label style="margin:10px 0 0;">Flight No</label>
                     </div>
                     <div class="col-md-7">
-                        <span class="form-control">EK 992</span>
+                        <span class="form-control">'.$flight_no.'</span>
                     </div>
                 </div><!-- /row-end -->
             </div>
         </div><!-- /row-end -->
 
+        <div class="border-d m-top-40-bot-30"></div>';
+
+$passengers_data = json_decode($data['passengers_data'], true);
+if (!empty($passengers_data['adults'])) {
+	$template .= ' <div class="row">
+            <div class="col-md-12">
+                <h4>Passengers Data</h4>
+            </div>
+        </div><!-- /row-end --> 
+		<div class="border-b m-top-10-bot-20"></div>';	
+	
+	foreach ($passengers_data['adults'] as $adult) {
+	 	$full_name = !empty($adult['full_name']) ? $adult['full_name'] : '';
+	 	$dob = !empty($adult['dob']) ? $adult['dob'] : '';
+	 	$title = !empty($adult['title']) ? $adult['title'] : '';
+	 	$cnic = !empty($adult['cnic']) ? $adult['cnic'] : '';
+	 	$wheel_chair_required = !empty($adult['wheel_chair_required']) ? $adult['wheel_chair_required'] : '';
+	 	
+		$template .= '
+	 		<div class="row m-bot-20">
+	        	<div class="col-md-6">
+	            	<div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Adult Full Name</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$full_name.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div><!-- -/col-md-6-end -->
+	        	<div class="col-md-6">
+	            	<div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Date Of Birth</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$dob.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div><!-- -/col-md-6-end -->
+	        </div><!-- /row-end -->
+	
+	        <div class="row m-bot-20"> 
+	        	<div class="col-md-6">
+	                <div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label>CNIC</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$cnic.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div>
+	            <div class="col-md-6">
+	                <div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Title</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$title.'</span>
+	                    </div>
+	                </div><!-- /row-end -->
+	        	</div>
+	        </div><!-- /row-end --> 
+	        
+	        <div class="row m-bot-20">
+	            <div class="col-md-6 text-right">
+	            	<label>Wheel Chair Required</label>
+	            </div> 
+	            <div class="col-md-6">
+	                <span class="form-control">'.$wheel_chair_required.'</span>  
+	            </div>
+	        </div><!-- /row-end -->
+	 		<div class="border-d m-top-40-bot-30"></div>
+	 		';
+	}
+}
+
+if (!empty($passengers_data['childs'])) {
+	foreach ($passengers_data['childs'] as $child) {
+	 	$full_name = !empty($child['full_name']) ? $child['full_name'] : '';
+	 	$dob = !empty($child['dob']) ? $child['dob'] : '';
+	 	$title = !empty($child['title']) ? $child['title'] : '';
+	 	$cnic = !empty($child['cnic']) ? $child['cnic'] : '';
+	 	$wheel_chair_required = !empty($child['wheel_chair_required']) ? $child['wheel_chair_required'] : '';
+	 	
+		$template .= '
+	 		<div class="row m-bot-20">
+	        	<div class="col-md-6">
+	            	<div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Child Full Name</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$full_name.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div><!-- -/col-md-6-end -->
+	        	<div class="col-md-6">
+	            	<div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Date Of Birth</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$dob.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div><!-- -/col-md-6-end -->
+	        </div><!-- /row-end -->
+	
+	        <div class="row m-bot-20"> 
+	        	<div class="col-md-6">
+	                <div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label>CNIC</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$cnic.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div>
+	            <div class="col-md-6">
+	                <div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Title</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$title.'</span>
+	                    </div>
+	                </div><!-- /row-end -->
+	        	</div>
+	        </div><!-- /row-end --> 
+	        
+	        <div class="row m-bot-20">
+	            <div class="col-md-6 text-right">
+	            	<label>Wheel Chair Required</label>
+	            </div> 
+	            <div class="col-md-6">
+	                <span class="form-control">'.$wheel_chair_required.'</span>  
+	            </div>
+	        </div><!-- /row-end -->
+	 		<div class="border-d m-top-40-bot-30"></div>
+	 		';
+	}
+}
+
+if (!empty($passengers_data['infants'])) {
+	foreach ($passengers_data['infants'] as $infant) {
+	 	$full_name = !empty($infant['full_name']) ? $infant['full_name'] : '';
+	 	$dob = !empty($infant['dob']) ? $infant['dob'] : '';
+	 	$title = !empty($infant['title']) ? $infant['title'] : '';
+	 	$cnic = !empty($infant['cnic']) ? $infant['cnic'] : '';
+	 	$wheel_chair_required = !empty($infant['wheel_chair_required']) ? $infant['wheel_chair_required'] : '';
+	 	
+		$template .= '
+	 		<div class="row m-bot-20">
+	        	<div class="col-md-6">
+	            	<div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Infant Full Name</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$full_name.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div><!-- -/col-md-6-end -->
+	        	<div class="col-md-6">
+	            	<div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Date Of Birth</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$dob.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div><!-- -/col-md-6-end -->
+	        </div><!-- /row-end -->
+	
+	        <div class="row m-bot-20"> 
+	        	<div class="col-md-6">
+	                <div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label>CNIC</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$cnic.'</span>
+	                    </div>
+	                </div><!-- -/row-end -->
+	            </div>
+	            <div class="col-md-6">
+	                <div class="row">
+	                    <div class="col-md-5 text-right">
+	                        <label style="margin:10px 0 0;">Title</label>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <span class="form-control">'.$title.'</span>
+	                    </div>
+	                </div><!-- /row-end -->
+	        	</div>
+	        </div><!-- /row-end --> 
+	        
+	        <div class="row m-bot-20">
+	            <div class="col-md-6 text-right">
+	            	<label>Wheel Chair Required</label>
+	            </div> 
+	            <div class="col-md-6">
+	                <span class="form-control">'.$wheel_chair_required.'</span>  
+	            </div>
+	        </div><!-- /row-end -->
+	 		<div class="border-d m-top-40-bot-30"></div>
+	 		';
+	}
+} 
+
+  $template .= '
+  		
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Other Information</h4>
+            </div>
+        </div><!-- /row-end --> 
+        <div class="border-b m-top-10-bot-20"></div>
+  		  		
+        <div class="row m-bot-20"> 
+        	<div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 text-right">
+                        <label style="margin:10px 0 0;">Agent</label>
+                    </div>
+                     <div class="col-md-7">
+                        <span class="form-control">'.$agent_name.'</span>
+                    </div>
+                </div><!-- /row-end -->
+            </div>
+        	<div class="col-md-6">
+                <div class="row">
+					<div class="col-md-5 text-right">
+                		<label style="margin:10px 0 0;">Agent Email</label>
+            		</div>
+                    <div class="col-md-7">
+                        <span class="form-control">'.$agent_email.'</span>
+                    </div>	
+               </div><!-- /row-end -->
+            </div>
+        </div><!-- /row-end -->  
+ 
+        <div class="border-d m-top-40-bot-30"></div>
+
+		<div class="row m-bot-20">
+        	 <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 text-right">
+                        <label style="margin:10px 0 0;">Departure</label>
+                    </div>
+                    <div class="col-md-7">
+                        <span class="form-control">'.$departing.'</span>
+                    </div>
+                </div><!-- /row-end -->
+              </div>
+        </div><!-- /row-end -->
+                        		
 		<div class="row m-bot-20">
         	 <div class="col-md-6">
                 <div class="row">
@@ -255,7 +553,7 @@ function getBookingDetailsTemplate($data = array()) {
                         <label style="margin:10px 0 0;">Departure Time</label>
                     </div>
                     <div class="col-md-7">
-                        <span class="form-control">04 : 00</span>
+                        <span class="form-control">'.$departure_time.'</span>
                     </div>
                 </div><!-- /row-end -->
               </div>
@@ -265,7 +563,7 @@ function getBookingDetailsTemplate($data = array()) {
                         <label style="margin:10px 0 0;">Arrival Time</label>
                     </div>
                     <div class="col-md-7">
-                        <span class="form-control">05 : 00</span>
+                        <span class="form-control">'.$arrival_time.'</span>
                     </div>
               	</div><!-- /row-end -->
               </div>
@@ -278,26 +576,28 @@ function getBookingDetailsTemplate($data = array()) {
                         <label style="margin:10px 0 0;">Route Type</label>
                     </div>
                     <div class="col-md-7">
-                        <span class="form-control">Oneway</span>
+                        <span class="form-control">'.ucfirst($route_type).'</span>
                     </div>
             	</div><!-- /row-end -->
            </div>
            <div class="col-md-6">
                 <div class="row">
                    <div class="col-md-5 text-right">
-                        <label style="margin:10px 0 0;">Trip Total</label>
+                        <label style="margin:10px 0 0;">Total Amount</label>
                     </div>
                     <div class="col-md-7">
-                        <span class="form-control">PKR 10,400.00</span>
+                        <span class="form-control">'. getCurrencyFormat($total_amount) .'</span>
                     </div>
                 </div><!-- /row-end -->
            </div>
         </div><!-- /row-end -->
     </div><!-- /col-12-end -->   
 </div><!-- /well-end -->
-	
-	
-<?php
+
+</body>
+</html>';
+
+return $template;
 }
 
 function getCityCode($city_id = '') {
@@ -411,21 +711,23 @@ function wptm_process_post() {
 			
 			$to = $admin_email;
 			$subject = ADMIN_EMAIL_FLIGHT_BOOKING_SUBJECT;
+			
+			$fields = get_field_objects( $data['tour_id'] );
+			$data = array_merge($data, $fields);
 			$booking_details = getBookingDetailsTemplate($data);
-
 			$message = str_replace('{booking_details}', $booking_details, ADMIN_EMAIL_FLIGHT_BOOKING_CONTENT);
+
 			$headers = array("From:$admin_email","Content-Type: text/html; charset=UTF-8");
 
-			//wp_mail( $to, $subject, $message, $headers );
+			wp_mail( $to, $subject, $message, $headers );
 			
 			// Send Email to Customer
-			
 			
 			$to = $customer_email;
 			$subject = CUSTOMER_EMAIL_FLIGHT_BOOKING_SUBJECT;
 			$message = str_replace('{customer_name}', $customer_name, CUSTOMER_EMAIL_FLIGHT_BOOKING_CONTENT);
 
-			//wp_mail( $to, $subject, $message, $headers );
+			wp_mail( $to, $subject, $message, $headers );
 
 			wp_redirect( get_permalink('2'));
 			exit();

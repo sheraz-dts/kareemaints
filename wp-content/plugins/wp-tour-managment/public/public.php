@@ -570,15 +570,15 @@ function wptm_tour_client_form() {
 		        <div class="row m-bot-20">
 		            <div class="col-md-4 col-sm-4 col-xs-4">
 		                <label>Child Full Name*</label>
-		                <input name="passengers[childs][<?php echo $adult_count; ?>][full_name]" type="text" placeholder="Adult Full Name" class="form-control">
+		                <input name="passengers[childs][<?php echo $child_count; ?>][full_name]" type="text" placeholder="Child Full Name" class="form-control">
 		            </div>
 		            <div class="col-md-4 col-sm-4 col-xs-4">
 		                <label>Date Of Birth</label>
-		                <input name="passengers[childs][<?php echo $adult_count; ?>][dob]" type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
+		                <input name="passengers[childs][<?php echo $child_count; ?>][dob]" type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
 		            </div>
 		            <div class="col-md-4">
 		                <label>Title</label>
-		                <select name="passengers[childs][<?php echo $adult_count; ?>][title]" class="form-control">
+		                <select name="passengers[childs][<?php echo $child_count; ?>][title]" class="form-control">
 		                    <option selected="selected" value="S">Select</option>
 		                    <option value="MR">Mr</option>
 		                    <option value="MRS">Mrs</option>
@@ -589,13 +589,13 @@ function wptm_tour_client_form() {
 		        <div class="row m-bot-20 t-text">
 		            <div class="col-md-4">
 		                <label>CNIC*</label>
-		                <input name="passengers[childs][<?php echo $adult_count; ?>][cnic]" type="text" class="form-control" placeholder="43259568129912">
+		                <input name="passengers[childs][<?php echo $child_count; ?>][cnic]" type="text" class="form-control" placeholder="43259568129912">
 		                <div class="spans">Enter CNIC or Passport Number</div>
 		            </div>
 		            <div class="col-md-4">
 	                    <label>Wheel Chair Required</label>
 	                    <div class="checkbox checks"> 
-	                        <label><input name="passengers[childs][<?php echo $adult_count; ?>][wheel_chair_required]" type="checkbox" value="Yes"> 
+	                        <label><input name="passengers[childs][<?php echo $child_count; ?>][wheel_chair_required]" type="checkbox" value="Yes"> 
 	                            <i class="fa fa-wheelchair"></i>
 	                        </label> 
 	                    </div> 
@@ -609,15 +609,15 @@ function wptm_tour_client_form() {
 		        <div class="row m-bot-20">
 		            <div class="col-md-4 col-sm-4 col-xs-4">
 		                <label>Infant Full Name*</label>
-		                <input name="passengers[infant][<?php echo $adult_count; ?>][full_name]" type="text" placeholder="Adult Full Name" class="form-control">
+		                <input name="passengers[infants][<?php echo $infant_count; ?>][full_name]" type="text" placeholder="Infant Full Name" class="form-control">
 		            </div>
 		            <div class="col-md-4 col-sm-4 col-xs-4">
 		                <label>Date Of Birth</label>
-		                <input name="passengers[infants][<?php echo $adult_count; ?>][dob]" type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
+		                <input name="passengers[infants][<?php echo $infant_count; ?>][dob]" type="text" placeholder="mm/dd/yyyy" class="form-control datepicker">
 		            </div>
 		            <div class="col-md-4">
 		                <label>Title</label>
-		                <select name="passengers[infants][<?php echo $adult_count; ?>][title]" class="form-control">
+		                <select name="passengers[infants][<?php echo $infant_count; ?>][title]" class="form-control">
 		                    <option selected="selected" value="S">Select</option>
 		                    <option value="MR">Mr</option>
 		                    <option value="MRS">Mrs</option>
@@ -628,13 +628,13 @@ function wptm_tour_client_form() {
 		        <div class="row m-bot-20 t-text">
 		            <div class="col-md-4">
 		                <label>CNIC*</label>
-		                <input name="passengers[infants][<?php echo $adult_count; ?>][cnic]" type="text" class="form-control" placeholder="43259568129912">
+		                <input name="passengers[infants][<?php echo $infant_count; ?>][cnic]" type="text" class="form-control" placeholder="43259568129912">
 		                <div class="spans">Enter CNIC or Passport Number</div>
 		            </div>
 		            <div class="col-md-4">
 	                    <label>Wheel Chair Required</label>
 	                    <div class="checkbox checks"> 
-	                        <label><input name="passengers[infants][<?php echo $adult_count; ?>][wheel_chair_required]" type="checkbox" value="Yes"> 
+	                        <label><input name="passengers[infants][<?php echo $infant_count; ?>][wheel_chair_required]" type="checkbox" value="Yes"> 
 	                            <i class="fa fa-wheelchair"></i>
 	                        </label> 
 	                    </div> 
@@ -678,6 +678,8 @@ function wptm_tour_client_form() {
 		<input name="childs" id="childs" type="hidden" value="<?php echo $childs; ?>">
 		<input name="infants" id="infants" type="hidden" value="<?php echo $infants; ?>">
 		<input name="flight_class" id="flight_class" type="hidden" value="<?php echo $flight_class; ?>">
+		<input name="flight_no" id="flight_no" type="hidden" value="<?php echo $flight_no; ?>">
+		<input name="aeroplane_description" id="aeroplane_description" type="hidden" value="<?php echo $aeroplane_description; ?>">
 		<input name="route_type" id="route_type" type="hidden" value="<?php echo $route_type; ?>">
 		
 		<input name="customer_name" id="customer_name" type="hidden" value="Fareed">

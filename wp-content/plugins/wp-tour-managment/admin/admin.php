@@ -97,6 +97,7 @@ function wptm_settings_options() {
 
 <?php
 	function wptm_bookings_admin(){
+		$bookings = get_bookings();
 ?>
 	<div class="wrap">
 		<h2 style="margin-bottom:15px;">Customer Booking Requests</h2>
@@ -106,24 +107,33 @@ function wptm_settings_options() {
 		  <table class="table table-striped wp-list-table widefat fixed striped posts">
 		    <thead>
 		      <tr>
-		        <th>#</th>
-		        <th>Adult Full Name</th>
-		        <th>Date Of Birth</th>
-		        <th>Title</th>
-		        <th>CNIC</th>
-		        <th>Wheel Chair Required
-		        </th>
+		        <th><input type="checkbox" name="check_all_bookings" id="check_all_bookings"></th>
+		        <th>Route</th>
+		        <th>Total Tickets</th>
+		        <th>Flight Class</th>
+		        <th>Route Type</th>
+		        <th>Customer Email</th>
+		        <th>Booking Date</th>
+		        <th>Agent Email</th>
+		        <th>Status</th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		      <tr>
-		        <th scope="row">1</th>
-		        <td>Faraz</td>
-		        <td>Mr</td>
-		        <td>04/07/1998</td>
-		        <td>42101-0955375-8</td>
-		        <td>No</td>
-		      </tr>
+	    	<?php if (!empty($bookings)) { ?>
+				<?php foreach ($bookings as $booking) { ?>
+			      <tr>
+			        <th scope="row"><input type="checkbox" name="check_booking[]" class="check_booking" value="<?php echo $booking['booking_id']?>"></th>
+			        <td><?php echo $booking['tour_title']?></td>
+			        <td><?php echo $booking['total_tickets']?></td>
+			        <td><?php echo ucfirst($booking['flight_class'])?></td>
+			        <td><?php echo ucfirst($booking['route_type'])?></td>
+			        <td><?php echo $booking['customer_email']?></td>
+			        <td><?php echo $booking['date_created']?></td>
+			        <td><?php echo $booking['agent_email']?></td>
+			        <td><?php echo ucfirst($booking['status'])?></td>
+			      </tr>				
+				<?php } ?>	
+	      	<?php } ?>
 		    </tbody>
 		  </table>
 		</div><!-- /bs-example-end -->
